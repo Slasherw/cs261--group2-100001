@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TU request</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/request.css">
 </head>
 
@@ -16,13 +17,19 @@
             <p>User Name
                 <img src="/img/account.png" alt="account">
             </p>
-            <p id="menu">
-                <img src="/img/message-icon.png" alt="message">
-                <img src="/img/bell-icon.png" alt="notification">
+            <p id="icon">
+                <a href="#" onclick="toggleSidebar()" class="fa fa-bars" style="color: black;"></a>
+                <a class="fa fa-bell"></a>
             </p>
         </div>
+    </div>
 
-
+    <div id="menubar" class="menubar">
+        <p href="#" class="close-btn" onclick="toggleSidebar()">✖</p>
+        <a href="#">เขียนคำร้อง</a>
+        <a href="#">ประวัติการยื่นคำร้อง</a>
+        <a href="#">แบบร่าง</a>
+        <a href="#">สถานะคำร้อง</a>
     </div>
 
     <div class="container">
@@ -122,6 +129,13 @@
             </div>
         </form>
     </div>
+
+    <script>
+        // ฟังก์ชันเปิด-ปิด Sidebar
+        function toggleSidebar() {
+            document.getElementById("menubar").classList.toggle("active");
+        }
+    </script>
 
 </body>
 

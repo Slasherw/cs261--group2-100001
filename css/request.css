@@ -15,6 +15,47 @@ body {
     width: 100%
 }
 
+.menubar {
+    position: fixed;
+    left: -250px; 
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #C3002F;
+    color: white;
+    padding-top: 60px;
+    transition: 0.3s; 
+}
+
+.menubar.active {
+    left: 0; 
+}
+
+.menubar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    display: block;
+    font-size: 18px;
+    background-color: #ffffff;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.menubar a:hover {
+    background-color: #ffffff;
+    transform: scale(1.01);
+    box-shadow: 0 0 0px rgba(93, 93, 93, 0.8);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: white;
+}
+
 .container {
     max-width: 900px;
     margin: auto;
@@ -39,9 +80,14 @@ body {
     width: 50px;
 }
 
-#menu {
+#icon {
+    display: flex;
     justify-content: flex-end;
+    margin-right: 10px;
+    margin-top: 10px;
+    gap: 10px;
 }
+
 
 #menu img {
     width: 18px;
