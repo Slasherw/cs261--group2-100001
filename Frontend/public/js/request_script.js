@@ -138,16 +138,37 @@ semester.addEventListener('change', validateSemester);
 uniYear.addEventListener('input', validateSemester);
 
 
+
+
+
+
+//pop up for clickingตกลง
 document.getElementById('submit-btn').addEventListener('click', function() {
-    document.getElementById('popup').style.display = 'block';
+    document.getElementById('popupsubmit').style.display = 'block';
     });
 
-document.getElementById('yes-btn').addEventListener('click', function() {
+document.getElementById('saveedit').addEventListener('click', function() {
     alert('บันทึกแบบร่างสำเร็จ');
-    document.getElementById('popup').style.display = 'none';
+    document.getElementById('popupsubmit').style.display = 'none';
+    });
+
+document.getElementById('sendrequest').addEventListener('click', function() {
+    alert('ส่งคำร้องสำเร็จ');
+    document.getElementById('popupsubmit').style.display = 'none';
+    });
+
+
+//pop up for clickingยกเลิก
+document.getElementById('cancel-btn').addEventListener('click', function() {
+    document.getElementById('popupcancel').style.display = 'block';
     });
 
 document.getElementById('no-btn').addEventListener('click', function() {
-    alert('ส่งคำร้องสำเร็จ');
-    document.getElementById('popup').style.display = 'none';
+    // alert('');
+    document.getElementById('popupcancel').style.display = 'none';
+    });
+
+document.getElementById('yes-btn').addEventListener('click', function() {
+    alert('ยกเลิกสำเร็จ');
+    document.getElementById('popupcancel').style.display = 'none';
     });
