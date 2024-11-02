@@ -136,3 +136,18 @@ const semester = document.getElementById('semester');
 const uniYear = document.getElementById('uni-year');
 semester.addEventListener('change', validateSemester);
 uniYear.addEventListener('input', validateSemester);
+
+
+document.getElementById('submit-btn').addEventListener('click', function() {
+    document.getElementById('popup').style.display = 'block';
+    });
+
+document.getElementById('yes-btn').addEventListener('click', function() {
+    alert('บันทึกแบบร่างสำเร็จ');
+    document.getElementById('popup').style.display = 'none';
+    });
+
+document.getElementById('no-btn').addEventListener('click', function() {
+    alert('ส่งคำร้องสำเร็จ');
+    document.getElementById('popup').style.display = 'none';
+    });

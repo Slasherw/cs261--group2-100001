@@ -6,13 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TU request</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/Frontend/public/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Radley:ital@0;1&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/Frontend/public/css/style.css"> -->
+    <link rel="stylesheet" href="../css/style.css">
+
+
 </head>
 
 <body class="request-form">
     <div class="header">
-        <img src="/Frontend/public/img/tu_logo.png" alt="TU_logo">
-        <div class="user-info">
+        <div class= "tulogo">
+            <!-- <img src="/Frontend/public/img/tu_logo.png" alt="TU_logo"> -->
+            <img src="../img/tu_logo.png" alt="TU_logo">
+        </div>
+        
+        <div class="user-info" >
             <p>User Name
                 <a class="fa fa-user-circle"></a>
             </p>
@@ -24,115 +34,131 @@
         </div>
     </div>
 
-    <div id="menubar" class="menubar">
-        <a href="#">เขียนคำร้อง</a>
-        <a href="#">ประวัติการยื่นคำร้อง</a>
-        <a href="#">แบบร่าง</a>
-        <a href="#">สถานะคำร้อง</a>
-    </div>
-
-    <div class="container">
-        <form action="#" method="post">
-
-            <div class="date-form">
-                <label for="date"></label>
-                <input type="date" id="date" name="date" required><br>
-                <p id="date-error"></p><br>
-            </div>
-
-            <h2 class="personal-info">ข้อมูลส่วนตัว</h2>
-            <select>
-                <option value="" disabled selected>คำนำหน้า</option>
-                <option value="นาย">นาย</option>
-                <option value="นางสาว">นางสาว</option>
-                <option value="นาง">นาง</option>
-            </select>
-            <input type="text" id="fullname" placeholder="ชื่อ-สกุล">
-            <label>เลขทะเบียน</label>
-            <input type="text" id="number">
-            <span id="number-error"></span>
-            <label>ชั้นปี</label>
-            <input type="number" id="year">
-            </p>
-            <label>สาขาวิชา</label>
-            <select>
-                <option value="" disabled selected>กรุณาเลือกสาขาวิชา</option>
-                <option value="สาขาวิชาคณิตศาสตร์และสถิติ">สาขาวิชาคณิตศาสตร์และสถิติ</option>
-                <option value="สาขาวิชาฟิสิกส์">สาขาวิชาฟิสิกส์</option>
-                <option value="สาขาวิชาเคมี">สาขาวิชาเคมี</option>
-                <option value="สาขาวิชาวิทยาการคอมพิวเตอร์">สาขาวิชาวิทยาการคอมพิวเตอร์</option>
-                <option value="สาขาวิชาเทคโนโลยีการเกษตร">สาขาวิชาเทคโนโลยีการเกษตร</option>
-                <option value="สาขาวิชาวิทยาศาสตร์สิ่งแวดล้อม">สาขาวิชาวิทยาศาสตร์สิ่งแวดล้อม</option>
-                <option value="สาขาวิชาเทคโนโลยีเพื่อการพัฒนายั่งยืน">สาขาวิชาเทคโนโลยีเพื่อการพัฒนายั่งยืน</option>
-                <option value="สาขาวิชาวิทยาศาสตร์และเทคโนโลยีการอาหาร">สาขาวิชาวิทยาศาสตร์และเทคโนโลยีการอาหาร</option>
-                <option value="สาขาวิชาเทคโนโลยีชีวภาพ">สาขาวิชาเทคโนโลยีชีวภาพ</option>
-                <option value="สาขาวิชาเทคโนโลยีวัสดุและสิ่งทอ">สาขาวิชาเทคโนโลยีวัสดุและสิ่งทอ</option>
-            </select>
 
 
-            <h2 class="address">ที่อยู่ที่สามารถติดต่อได้</h2>
-            <label>เลขที่</label>
-            <input type="text" id="no">
-            <label>แขวง/ตำบล</label>
-            <input type="text" id="sub-district">
-            <label>เขต/อำเภอ</label>
-            <input type="text" id="district">
-            </p>
-            <label>จังหวัด</label>
-            <input type="text" id="province">
-            <label>โทรศัพท์นักศึกษา</label>
-            <input type="text" id="phone" class="phone-number">
-            <span id = "phone-error"></span>
-            </p>
-            <label>โทรศัพท์ผู้ปกครอง</label>
-            <input type="text" id="parent" class="phone-number">
-            <span id = "phone-error"></span>
-            <label>อาจารย์ที่ปรึกษา</label>
-            <input type="text" id="teacher">
-            </p>
 
-            <h2 class="request">ประสงค์จะยื่นคำร้องเรื่อง</h2>
-            <select>
-                <option value="" disabled selected>กรุณาเลือกประเภทของคำร้อง</option>
-                <option value="จดทะเบียนล่าช้า">คำร้องจดทะเบียนล่าช้า</option>
-                <option value="ถอนรายวิชา">คำร้องขอถอนรายวิชา</option>
-                <option value="จดทะเบียนศึกษาข้ามโครงการ">คำร้องจดทะเบียนศึกษาข้ามโครงการ</option>
-                <option value="ลาออก">คำร้องขอลาออก</option>
-            </select>
-            <label>ภาคเรียนที่</label>
-            <select id="semester">
-                <option value="" disabled selected>กรุณาเลือกภาคเรียน</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="summer">summer</option>
-            </select>
-            <label>ปีการศึกษา</label>
-            <input input type="text" id="uni-year" placeholder="กรอกเป็น พ.ศ.">
-            <span id="semester-error"></span>
-            </p>
-            <label>รหัสวิชา</label>
-            <input type="text" id="course-code">
-            <label>ชื่อวิชา</label>
-            <input type="text" id="course">
-            <label>Section</label>
-            <input type="text" id="Section">
+    <div id="divfornothead">
 
-            <h2 class="reason">เหตุผลในการยื่นคำร้อง
-                <div>
-                    <textarea placeholder="กรอกคำอธิบายเพิ่มเติม..."></textarea>
+        <div id="menubar" class="menubar">
+            <button><a href="#">เขียนคำร้อง</a></button>
+            <button><a href="#">ประวัติการยื่นคำร้อง</a></button>
+            <button><a href="#">แบบร่าง</a></button>
+            <button><a href="#">สถานะคำร้อง</a></button>
+        </div>
+
+        <div class="container" >
+            <form action="#" method="post">
+
+                <div class="date-form">
+                    <label for="date"></label>
+                    <input type="date" id="date" name="date" required><br>
+                    <p id="date-error"></p><br>
                 </div>
-            </h2>
+
+                <h2 class="personal-info">ข้อมูลส่วนตัว</h2>
+                <select>
+                    <option value="" disabled selected>คำนำหน้า</option>
+                    <option value="นาย">นาย</option>
+                    <option value="นางสาว">นางสาว</option>
+                    <option value="นาง">นาง</option>
+                </select>
+                <input type="text" id="fullname" placeholder="ชื่อ-สกุล">
+                <label>เลขทะเบียน</label>
+                <input type="text" id="number">
+                <span id="number-error"></span>
+                <label>ชั้นปี</label>
+                <input type="number" id="year">
+                </p>
+                <label>สาขาวิชา</label>
+                <select>
+                    <option value="" disabled selected>กรุณาเลือกสาขาวิชา</option>
+                    <option value="สาขาวิชาคณิตศาสตร์และสถิติ">สาขาวิชาคณิตศาสตร์และสถิติ</option>
+                    <option value="สาขาวิชาฟิสิกส์">สาขาวิชาฟิสิกส์</option>
+                    <option value="สาขาวิชาเคมี">สาขาวิชาเคมี</option>
+                    <option value="สาขาวิชาวิทยาการคอมพิวเตอร์">สาขาวิชาวิทยาการคอมพิวเตอร์</option>
+                    <option value="สาขาวิชาเทคโนโลยีการเกษตร">สาขาวิชาเทคโนโลยีการเกษตร</option>
+                    <option value="สาขาวิชาวิทยาศาสตร์สิ่งแวดล้อม">สาขาวิชาวิทยาศาสตร์สิ่งแวดล้อม</option>
+                    <option value="สาขาวิชาเทคโนโลยีเพื่อการพัฒนายั่งยืน">สาขาวิชาเทคโนโลยีเพื่อการพัฒนายั่งยืน</option>
+                    <option value="สาขาวิชาวิทยาศาสตร์และเทคโนโลยีการอาหาร">สาขาวิชาวิทยาศาสตร์และเทคโนโลยีการอาหาร</option>
+                    <option value="สาขาวิชาเทคโนโลยีชีวภาพ">สาขาวิชาเทคโนโลยีชีวภาพ</option>
+                    <option value="สาขาวิชาเทคโนโลยีวัสดุและสิ่งทอ">สาขาวิชาเทคโนโลยีวัสดุและสิ่งทอ</option>
+                </select>
 
 
-            <div class="buttons">
-                <button type="button" id="submit-btn">ตกลง</button>
-                <button type="reset" id="cancel-btn">ยกเลิก</button>
-            </div>
-        </form>
+                <h2 class="address">ที่อยู่ที่สามารถติดต่อได้</h2>
+                <label>เลขที่</label>
+                <input type="text" id="no">
+                <label>แขวง/ตำบล</label>
+                <input type="text" id="sub-district">
+                <label>เขต/อำเภอ</label>
+                <input type="text" id="district">
+                </p>
+                <label>จังหวัด</label>
+                <input type="text" id="province">
+                <label>โทรศัพท์นักศึกษา</label>
+                <input type="text" id="phone" class="phone-number">
+                <span id = "phone-error"></span>
+                </p>
+                <label>โทรศัพท์ผู้ปกครอง</label>
+                <input type="text" id="parent" class="phone-number">
+                <span id = "phone-error"></span>
+                <label>อาจารย์ที่ปรึกษา</label>
+                <input type="text" id="teacher">
+                </p>
+
+                <h2 class="request">ประสงค์จะยื่นคำร้องเรื่อง</h2>
+                <select>
+                    <option value="" disabled selected>กรุณาเลือกประเภทของคำร้อง</option>
+                    <option value="จดทะเบียนล่าช้า">คำร้องจดทะเบียนล่าช้า</option>
+                    <option value="ถอนรายวิชา">คำร้องขอถอนรายวิชา</option>
+                    <option value="จดทะเบียนศึกษาข้ามโครงการ">คำร้องจดทะเบียนศึกษาข้ามโครงการ</option>
+                    <option value="ลาออก">คำร้องขอลาออก</option>
+                </select>
+                <label>ภาคเรียนที่</label>
+                <select id="semester">
+                    <option value="" disabled selected>กรุณาเลือกภาคเรียน</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="summer">summer</option>
+                </select>
+                <label>ปีการศึกษา</label>
+                <input input type="text" id="uni-year" placeholder="กรอกเป็น พ.ศ.">
+                <span id="semester-error"></span>
+                </p>
+                <label>รหัสวิชา</label>
+                <input type="text" id="course-code">
+                <label>ชื่อวิชา</label>
+                <input type="text" id="course">
+                <label>Section</label>
+                <input type="text" id="Section">
+
+                <h2 class="reason">เหตุผลในการยื่นคำร้อง
+                    <div>
+                        <textarea placeholder="กรอกคำอธิบายเพิ่มเติม..."></textarea>
+                    </div>
+                </h2>
+
+
+                <div class="buttons">
+                    <button type="button" id="submit-btn">ตกลง</button>
+                    <button type="reset" id="cancel-btn">ยกเลิก</button>
+                </div>
+            </form>
+
+        </div>
+
+
+        <div id="popup" class="popup">
+            <p>บันทึกแบบร่าง หรือ ส่งคำร้อง ?</p>
+            <button id="yes-btn">บันทึกแบบร่าง</button>
+            <button id="no-btn">ส่งคำร้อง</button>
+        </div>
+
     </div>
 
     <script src="/Frontend/public/js/script.js"></script>
     <script src="/Frontend/public/js/request_script.js"></script>
+    <!-- <script src="../js/request_script.js"></script> -->
 
 </body>
 

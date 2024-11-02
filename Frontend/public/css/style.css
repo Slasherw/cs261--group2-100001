@@ -1,0 +1,111 @@
+*{
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+    background: linear-gradient(135deg, #f7a94d, #ffd76e);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ถ้าอยากใช้รูปเป็นbgbody{
+    background-image: url('bg request.jfif');
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}*/
+
+.container {
+    width: 60%;
+    max-width: 800px;
+    margin: 50px auto;
+    margin-top: 0px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.menubar {
+    background-color: #d83933;
+    width: 200px;
+    min-height: 100vh;
+    padding-top: 20px;
+    align-items: center;
+}
+
+.menubar button {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #fff;
+    color: #d83933;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menubar button:hover {
+    background-color: #f4f4f4;
+}
+#divfornothead{
+	display:flex; 
+	align-items: center;
+}
+/* Head*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #d83933;
+}
+
+.header img {
+    height: 50px;
+    margin-right: 10px;
+    width: 50%;
+    height: auto;
+    padding-top: 20px;
+    padding-left: 30px;
+}
+#icon{
+	text-align: right;
+
+}
+.header p{
+	font-size: 25px;
+	padding-right: 30px;
+}
+.header a{
+	padding-right: 8px;
+	padding-left: 8px;
+}
+
+
+
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.popup button {
+    margin: 5px;
+}
