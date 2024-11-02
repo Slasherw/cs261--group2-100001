@@ -1,3 +1,4 @@
+//submit login
 function submitLogin(){
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -37,7 +38,7 @@ function validateUsername() {
     const errorMessage = document.getElementById('error-message');
     errorMessage.style.color = 'red';
 
-    if (!username.length > 0) {
+    if (!username) {
         errorMessage.innerText = 'กรุณากรอกชื่อผู้ใช้';
         return false;
     }

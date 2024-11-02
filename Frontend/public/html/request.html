@@ -36,7 +36,8 @@
 
             <div class="date-form">
                 <label for="date"></label>
-                <input type="date" id="date" name="date" required><br><br>
+                <input type="date" id="date" name="date" required><br>
+                <p id="date-error"></p><br>
             </div>
 
             <h2 class="personal-info">ข้อมูลส่วนตัว</h2>
@@ -49,6 +50,7 @@
             <input type="text" id="fullname" placeholder="ชื่อ-สกุล">
             <label>เลขทะเบียน</label>
             <input type="text" id="number">
+            <span id="number-error"></span>
             <label>ชั้นปี</label>
             <input type="number" id="year">
             </p>
@@ -79,10 +81,12 @@
             <label>จังหวัด</label>
             <input type="text" id="province">
             <label>โทรศัพท์นักศึกษา</label>
-            <input type="text" id="phone">
+            <input type="text" id="phone" class="phone-number">
+            <span id = "phone-error"></span>
             </p>
             <label>โทรศัพท์ผู้ปกครอง</label>
-            <input type="text" id="parent">
+            <input type="text" id="parent" class="phone-number">
+            <span id = "phone-error"></span>
             <label>อาจารย์ที่ปรึกษา</label>
             <input type="text" id="teacher">
             </p>
@@ -96,7 +100,7 @@
                 <option value="ลาออก">คำร้องขอลาออก</option>
             </select>
             <label>ภาคเรียนที่</label>
-            <select>
+            <select id="semester">
                 <option value="" disabled selected>กรุณาเลือกภาคเรียน</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -104,6 +108,7 @@
             </select>
             <label>ปีการศึกษา</label>
             <input input type="text" id="uni-year" placeholder="กรอกเป็น พ.ศ.">
+            <span id="semester-error"></span>
             </p>
             <label>รหัสวิชา</label>
             <input type="text" id="course-code">
@@ -127,6 +132,7 @@
     </div>
 
     <script src="/Frontend/public/js/script.js"></script>
+    <script src="/Frontend/public/js/request_script.js"></script>
 
 </body>
 
