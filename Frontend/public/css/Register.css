@@ -92,6 +92,8 @@
   border-radius: 8px;
   border: none;
   background-color: #FFFCFD;
+  padding-left: 10px; 
+  padding-right: 10px; 
  }
 
  /* กำหนดสไตล์ให้กับ placeholder ในช่องกรอกข้อมูล */
