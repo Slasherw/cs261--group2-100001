@@ -92,6 +92,8 @@
   border-radius: 8px;
   border: none;
   background-color: #FFFCFD;
+  padding-left: 10px; 
+  padding-right: 10px; 
  }
 
  /* กำหนดสไตล์ให้กับ placeholder ในช่องกรอกข้อมูล */
@@ -118,7 +120,7 @@
  }
 
  /* สไตล์สำหรับปุ่ม submit */
- button[type="submit"]{
+ button[type="button"]{
   width: 400px;
   height: 30px;
   border-radius: 8px;
@@ -140,7 +142,7 @@
   text-decoration: none;
   color: #F52A4F;
  }
-
+ 
  /* กำหนดพื้นหลังของหน้าเป็นรูปภาพ */
  body {
   overflow: hidden;
