@@ -3,21 +3,21 @@
   font-weight: 400;
   font-style: normal;
 }
-body {
+/*body {
     background: linear-gradient(135deg, #f7a94d, #ffd76e);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
+}*/
 
 
-/* ถ้าอยากใช้รูปเป็นbgbody{
-    background-image: url('bg request.jfif');
+body{
+    background-image: url('/Frontend/public/img/request-bg.jpg');
     background-size: cover;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}*/
+}
 
 .container {
     width: 60%;
