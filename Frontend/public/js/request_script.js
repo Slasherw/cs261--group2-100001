@@ -112,6 +112,7 @@ function validateSemester(){
     }
     if (uniYear != thisYear+543) {
         errorMessage.innerText = 'ปีการศึกษาไม่ถูกต้อง';
+        return false;
     }
     else{
         errorMessage.innerText = '';

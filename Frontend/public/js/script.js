@@ -1,3 +1,13 @@
+//after submit form still have to check validate and not refresh page
+document.addEventListener('DOMContentLoaded', (event) => {
+    const form = document.getElementById('form');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitLogin();
+    });
+});
+
 //submit login
 function submitLogin(){
     const username = document.getElementById('username').value;

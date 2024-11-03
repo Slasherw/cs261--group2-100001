@@ -6,6 +6,8 @@
     <title>Tu Registration</title>
     <!-- เชื่อมต่อไฟล์ CSS สำหรับการกำหนดสไตล์ -->
     <link rel="stylesheet" href="css/Register.css">
+    <!-- เชื่อมต่อไฟล์ Javascript สำหรับการ login -->
+    <script src="js/script.js"></script>
 </head>
 <body>
      <!-- ส่วน header ที่แสดงชื่อมหาวิทยาลัยและโลโก้ -->
@@ -20,6 +22,7 @@
 
      <!-- กล่องสำหรับฟอร์มเข้าสู่ระบบ -->
      <div class="login">
+        <form id="form">
              <h1>ระบบยื่นคำร้อง</h1>
         <!-- ช่องกรอกชื่อผู้ใช้ -->
         <div class="name">
@@ -40,9 +43,8 @@
         <!-- ส่วนสำหรับแสดงข้อความผิดพลาด -->
         <div id="error-message"></div>
      </div>
+    </form>
 
-     <!-- เชื่อมต่อไฟล์ JavaScript -->
-     <script src="js/script.js"></script>
 </body>
 </html>
 
