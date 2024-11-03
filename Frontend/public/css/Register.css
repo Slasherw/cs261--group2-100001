@@ -3,6 +3,9 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
  }
 
  /* สไตล์สำหรับส่วน header */
@@ -41,6 +44,7 @@
   text-align: center;
   font-size: 1.5em; 
   letter-spacing: normal; 
+  font-weight: 500;
  }
 
  /* กำหนดสไตล์สำหรับบรรทัดข้อความภาษาอังกฤษ (THAMMASAT UNIVERSITY) */
@@ -49,6 +53,7 @@
   width: 100%;
   word-spacing: 15px;
   font-size: 1.2em;
+  font-weight: 500;
  }
 
  /* สไตล์สำหรับกล่องฟอร์มเข้าสู่ระบบ */
@@ -73,6 +78,7 @@
   margin-bottom: 25px;
   margin-right: 60px;
   color: #F52A4F;
+  font-weight: 500;
  }
 
  /* container สำหรับช่องกรอกชื่อผู้ใช้ */
@@ -88,7 +94,7 @@
  /* กำหนดสไตล์สำหรับช่องกรอกข้อมูลทั้งหมด */
  input[type="text"], input[type="password"]{
   width: 500px; 
-  height: 35px;
+  height: 40px;
   border-radius: 8px;
   border: none;
   background-color: #FFFCFD;
@@ -99,7 +105,7 @@
  /* กำหนดสไตล์ให้กับ placeholder ในช่องกรอกข้อมูล */
  input[type="text"]::placeholder , input[type="password"]::placeholder{
   color: #999; 
-  font-size: 10px;
+  font-size: 14px;
   padding-left: 10px; 
  }
 
@@ -122,12 +128,13 @@
  /* สไตล์สำหรับปุ่ม submit */
  button[type="button"]{
   width: 400px;
-  height: 30px;
+  height: 40px;
   border-radius: 8px;
   margin-top: 20px;
   background-color: #E60E56;
   color: white;
   border: none;
+  font-size: 15px;
  }
 
  /* สไตล์สำหรับลิงก์ลืมรหัสผ่าน */
@@ -141,6 +148,8 @@
  .forget a{
   text-decoration: none;
   color: #F52A4F;
+
+  font-size: 14px;
  }
  
  /* กำหนดพื้นหลังของหน้าเป็นรูปภาพ */
