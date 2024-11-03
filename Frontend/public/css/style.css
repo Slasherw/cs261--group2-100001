@@ -60,6 +60,7 @@
       text-align: center;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      font-size: 15px;
   }
   
   .menubar button:hover {
