@@ -12,7 +12,8 @@
   
   
   body{
-      background-image: url('/Frontend/public/img/request-bg.jpg');
+      /*background-image: url('/Frontend/public/img/request-bg.jpg');*/
+      background-image: url('../img/request-bg.jpg');
       background-size: cover;
       font-family: Arial, sans-serif;
       margin: 0;

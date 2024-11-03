@@ -8,5 +8,8 @@
   },
   "author": "CS261_GROUP2",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
 }

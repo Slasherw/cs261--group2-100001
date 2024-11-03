@@ -173,3 +173,14 @@ document.getElementById('yes-btn').addEventListener('click', function() {
     alert('ยกเลิกสำเร็จ');
     document.getElementById('popupcancel').style.display = 'none';
     });
+    const nameth = sessionStorage.getItem('displaynameth');
+document.getElementById('fullname').value = nameth;
+const numberID = sessionStorage.getItem('username');
+document.getElementById('number').value = numberID;
+const email = sessionStorage.getItem('email');
+document.getElementById('email').value = email;
+document.getElementById('menuname').value = nameth;
+const nameFromSession = sessionStorage.getItem('displaynameth');
+        if (nameFromSession) {
+            document.getElementById('menuname').innerHTML = `${nameFromSession} <a class="fa fa-user-circle"></a>`;
+        }

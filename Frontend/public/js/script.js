@@ -23,7 +23,7 @@ function submitLogin(){
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Application-Key': '{TOKEN}'//ใส่ Token ใช้งาน API
+            'Application-Key': '{token}'//ใส่ Token ใช้งาน API
        },
        body: JSON.stringify({"UserName": username, "PassWord": password})
     })
@@ -35,6 +35,20 @@ function submitLogin(){
     })
     .then(data => {
         console.log(data.message);
+        
+        if (data.status === true) {
+            sessionStorage.setItem('username', data.username);
+            sessionStorage.setItem('email', data.email);
+            sessionStorage.setItem('displayname', data.displayname_en);
+            sessionStorage.setItem('displaynameth', data.displayname_th);
+            sessionStorage.setItem('status1', data.statusid);
+            sessionStorage.setItem('department', data.department);
+            sessionStorage.setItem('faculty', data.faculty);
+            sessionStorage.setItem('type', data.type);
+            sessionStorage.setItem('statustu', data.tu_status);
+
+            // เปลี่ยนหน้าไปยัง lobby.html
+            window.location.href = 'html/lobby.html'; }
     })
     .catch(error => {
         console.error('Error:', error)

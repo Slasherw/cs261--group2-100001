@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Radley:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/Frontend/public/css/style.css">
-    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <link rel="stylesheet" href="../css/style.css"> 
 
 
 </head>
@@ -18,12 +18,12 @@
 <body class="request-form">
     <div class="header">
         <div class= "tulogo">
-            <img src="/Frontend/public/img/tu_logo.png" alt="TU_logo">
-            <!-- <img src="../img/tu_logo.png" alt="TU_logo"> -->
+            <!-- <img src="/Frontend/public/img/tu_logo.png" alt="TU_logo">-->
+            <img src="../img/tu_logo.png" alt="TU_logo">
         </div>
         
         <div class="user-info" >
-            <p>User Name
+            <p id ="menuname">User Name
                 <a class="fa fa-user-circle"></a>
             </p>
             <p id="icon">
@@ -40,10 +40,11 @@
     <div id="divfornothead">
 
         <div id="menubar" class="menubar">
-            <button><a href="#">เขียนคำร้อง</a></button>
-            <button><a href="#">ประวัติการยื่นคำร้อง</a></button>
+            <button><a href="../html/request.html">เขียนคำร้อง</a></button>
+            <button><a href="../html/history.html">ประวัติการยื่นคำร้อง</a></button>
             <button><a href="#">แบบร่าง</a></button>
             <button><a href="#">สถานะคำร้อง</a></button>
+            <button><a href="../html/lobby.html">หน้าหลัก</a></button>
         </div>
 
         <div class="container" >
@@ -84,7 +85,9 @@
                         <option value="สาขาวิชาเทคโนโลยีชีวภาพ">สาขาวิชาเทคโนโลยีชีวภาพ</option>
                         <option value="สาขาวิชาเทคโนโลยีวัสดุและสิ่งทอ">สาขาวิชาเทคโนโลยีวัสดุและสิ่งทอ</option>
                     </select>
-
+                    <!-- ใส่เพิ่มมาเพราะเอาดาต้ามาใส่ได้ ถ้าไม่อยากให้มีก็ลบออกได้เลย -->
+                    <label>อีเมลล์</label>
+                    <input type="text" id="email">
 
                     <h2 class="address">ที่อยู่ที่สามารถติดต่อได้</h2>
                     <label>เลขที่</label>
@@ -167,8 +170,8 @@
     </div>
 
     <script src="/Frontend/public/js/script.js"></script>
-    <script src="/Frontend/public/js/request_script.js"></script>
-    <!-- <script src="../js/request_script.js"></script> -->
+    <!--<script src="/Frontend/public/js/request_script.js"></script>-->
+    <script src="../js/request_script.js"></script>
 
 </body>
 
