@@ -1,0 +1,154 @@
+/* รีเซ็ต padding, margin และกำหนด box-sizing สำหรับทุก element */
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+ }
+
+ /* สไตล์สำหรับส่วน header */
+ .header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  margin-bottom: 50px;
+ }
+
+ /* สไตล์สำหรับข้อความหลักใน header และกำหนดสี */
+ .header-info h1{
+  font-weight: bold;
+  color: #F52A4F;
+ }
+
+ /* กำหนดสไตล์ให้กับรูปโลโก้ใน header */
+ .header-info img{
+   width: 100px;
+   margin-right: 10px;
+ }
+
+ /* สไตล์สำหรับ container ของ header */
+ .header-info{
+  /*border: solid black;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ /* กำหนดสไตล์สำหรับบรรทัดข้อความภาษาไทย (มหาวิทยาลัยธรรมศาสตร์) */
+ .header-info .line1 {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5em; 
+  letter-spacing: normal; 
+ }
+
+ /* กำหนดสไตล์สำหรับบรรทัดข้อความภาษาอังกฤษ (THAMMASAT UNIVERSITY) */
+.header-info .line2 {
+  display: inline-block;
+  width: 100%;
+  word-spacing: 15px;
+  font-size: 1.2em;
+ }
+
+ /* สไตล์สำหรับกล่องฟอร์มเข้าสู่ระบบ */
+ .login{
+  border: solid black;
+  border-radius: 10px;
+  border: none;
+  width: 550px;
+  text-align: center;
+  margin-left: 488px;
+  margin-top: 10px;
+  padding-left: 70px;
+  padding-bottom: 50px;
+  padding-top: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+ }
+
+ /* ข้อความหัวข้อในฟอร์มเข้าสู่ระบบ (ระบบยื่นคำร้อง) */
+ .login h1{
+  /* border: solid;  */
+  margin-bottom: 25px;
+  margin-right: 60px;
+  color: #F52A4F;
+ }
+
+ /* container สำหรับช่องกรอกชื่อผู้ใช้ */
+ .name{
+  /*border: solid ;*/
+  width: 400px;
+  margin-bottom: 26px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+ }
+
+ /* กำหนดสไตล์สำหรับช่องกรอกข้อมูลทั้งหมด */
+ input[type="text"] {
+  width: 500px; 
+  height: 35px;
+  border-radius: 8px;
+  border: none;
+  background-color: #FFFCFD;
+ }
+
+ /* กำหนดสไตล์ให้กับ placeholder ในช่องกรอกข้อมูล */
+ input[type="text"]::placeholder {
+  color: #999; 
+  font-size: 10px;
+  padding-left: 10px; 
+ }
+
+ /* container สำหรับช่องกรอกรหัสผ่าน */
+ .password{
+  /*border: solid;*/
+  width: 400px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+ }
+
+ /* container สำหรับปุ่มเข้าสู่ระบบ */
+ .submit{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+ }
+
+ /* สไตล์สำหรับปุ่ม submit */
+ button[type="submit"]{
+  width: 400px;
+  height: 30px;
+  border-radius: 8px;
+  margin-top: 40px;
+  background-color: #E60E56;
+  color: white;
+  border: none;
+ }
+
+ /* สไตล์สำหรับลิงก์ลืมรหัสผ่าน */
+ .forget {
+  margin-top: 10px;
+  font-size: 13px;
+  text-align: left;
+ }
+
+ /* กำหนดสไตล์สำหรับลิงก์ในส่วนลืมรหัสผ่าน */
+ .forget a{
+  text-decoration: none;
+  color: #F52A4F;
+ }
+
+ /* กำหนดพื้นหลังของหน้าเป็นรูปภาพ */
+ body {
+  background-image: url('../img/snapedit_1730490032702.jpeg'); 
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center; 
+  height: 80vh;
+  margin: 0; 
+ }                
+   
+   
