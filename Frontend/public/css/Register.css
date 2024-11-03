@@ -52,14 +52,14 @@
  }
 
  /* สไตล์สำหรับกล่องฟอร์มเข้าสู่ระบบ */
+ 
  .login{
   border: solid black;
   border-radius: 10px;
   border: none;
   width: 550px;
   text-align: center;
-  margin-left: 488px;
-  margin-top: 10px;
+  margin: 10px auto;
   padding-left: 70px;
   padding-bottom: 50px;
   padding-top: 30px;
@@ -86,7 +86,7 @@
  }
 
  /* กำหนดสไตล์สำหรับช่องกรอกข้อมูลทั้งหมด */
- input[type="text"] {
+ input[type="text"], input[type="password"]{
   width: 500px; 
   height: 35px;
   border-radius: 8px;
@@ -95,7 +95,7 @@
  }
 
  /* กำหนดสไตล์ให้กับ placeholder ในช่องกรอกข้อมูล */
- input[type="text"]::placeholder {
+ input[type="text"]::placeholder , input[type="password"]::placeholder{
   color: #999; 
   font-size: 10px;
   padding-left: 10px; 
@@ -122,7 +122,7 @@
   width: 400px;
   height: 30px;
   border-radius: 8px;
-  margin-top: 40px;
+  margin-top: 20px;
   background-color: #E60E56;
   color: white;
   border: none;
@@ -143,12 +143,18 @@
 
  /* กำหนดพื้นหลังของหน้าเป็นรูปภาพ */
  body {
+  overflow: hidden;
   background-image: url('../img/snapedit_1730490032702.jpeg'); 
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center; 
-  height: 80vh;
+  min-height: 100vh;
   margin: 0; 
- }                
+ }
+ 
+ #error-message {
+  margin-right: 60px;
+  color: #F52A4F;
+}
    
    
