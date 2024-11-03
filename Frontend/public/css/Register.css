@@ -118,7 +118,7 @@
  }
 
  /* สไตล์สำหรับปุ่ม submit */
- button[type="submit"]{
+ button[type="button"]{
   width: 400px;
   height: 30px;
   border-radius: 8px;
@@ -140,6 +140,18 @@
   text-decoration: none;
   color: #F52A4F;
  }
+
+ /* สไตล์สำหรับข้อความผิดพลาด */
+  #error-message {
+  /*border: solid;*/
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+  color: red; 
+  margin-top: 10px; 
+  margin-bottom: 20px; 
+  font-size: 14px; 
+}
 
  /* กำหนดพื้นหลังของหน้าเป็นรูปภาพ */
  body {
