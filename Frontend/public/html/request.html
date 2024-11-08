@@ -40,11 +40,11 @@
     <div id="divfornothead">
 
         <div id="menubar" class="menubar">
-            <button><a href="../html/lobby.html">หน้าหลัก</a></button>
             <button><a href="../html/request.html">เขียนคำร้อง</a></button>
             <button><a href="../html/history.html">ประวัติการยื่นคำร้อง</a></button>
-            <button><a href="#">แบบร่าง</a></button>
-            <button><a href="#">สถานะคำร้อง</a></button>
+            
+            
+            <button><a href="../html/lobby.html">หน้าหลัก</a></button>
         </div>
 
         <div class="container" >
@@ -58,7 +58,7 @@
 
                 <div>
                     <h2 class="personal-info">ข้อมูลส่วนตัว</h2>
-                    <select>
+                    <select id="prefix">
                         <option value="" disabled selected>คำนำหน้า</option>
                         <option value="นาย">นาย</option>
                         <option value="นางสาว">นางสาว</option>
@@ -72,7 +72,7 @@
                     <input type="number" id="year">
                     </p>
                     <label>สาขาวิชา</label>
-                    <select>
+                    <select id="department">
                         <option value="" disabled selected>กรุณาเลือกสาขาวิชา</option>
                         <option value="สาขาวิชาคณิตศาสตร์และสถิติ">สาขาวิชาคณิตศาสตร์และสถิติ</option>
                         <option value="สาขาวิชาฟิสิกส์">สาขาวิชาฟิสิกส์</option>
@@ -111,7 +111,7 @@
                     </p>
 
                     <h2 class="request">ประสงค์จะยื่นคำร้องเรื่อง</h2>
-                    <select>
+                    <select id="requesttype">
                         <option value="" disabled selected>กรุณาเลือกประเภทของคำร้อง</option>
                         <option value="จดทะเบียนล่าช้า">คำร้องจดทะเบียนล่าช้า</option>
                         <option value="ถอนรายวิชา">คำร้องขอถอนรายวิชา</option>
@@ -138,7 +138,7 @@
 
                     <h2 class="reason">เหตุผลในการยื่นคำร้อง</h2>
                         <div>
-                            <textarea placeholder="กรอกคำอธิบายเพิ่มเติม..."></textarea>
+                            <textarea id = "reason" placeholder="กรอกคำอธิบายเพิ่มเติม..."></textarea>
                         </div>
                     </h2>
 

@@ -23,7 +23,7 @@ function submitLogin(){
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Application-Key': '{token}'//ใส่ Token ใช้งาน API
+            'Application-Key': 'TU10d1197613da27725d53ec3f01e7e231bc54420808a87597a9b45924024749bf2c9dc4a82e74050249ebf878d454dd1a'//ใส่ Token ใช้งาน API
        },
        body: JSON.stringify({"UserName": username, "PassWord": password})
     })

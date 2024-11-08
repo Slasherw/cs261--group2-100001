@@ -1,3 +1,4 @@
+
 //validate Date
 function validateDate() {
     const date = document.getElementById('date').value;
@@ -144,9 +145,9 @@ uniYear.addEventListener('input', validateSemester);
 
 
 //pop up for clickingตกลง
-document.getElementById('submit-btn').addEventListener('click', function() {
-    document.getElementById('popupsubmit').style.display = 'block';
-    });
+//document.getElementById('submit-btn').addEventListener('click', function() {
+    //document.getElementById('popupsubmit').style.display = 'block';
+    //});
 
 document.getElementById('saveedit').addEventListener('click', function() {
     alert('บันทึกแบบร่างสำเร็จ');
@@ -173,7 +174,7 @@ document.getElementById('yes-btn').addEventListener('click', function() {
     alert('ยกเลิกสำเร็จ');
     document.getElementById('popupcancel').style.display = 'none';
     });
-    const nameth = sessionStorage.getItem('displaynameth');
+const nameth = sessionStorage.getItem('displaynameth');
 document.getElementById('fullname').value = nameth;
 const numberID = sessionStorage.getItem('username');
 document.getElementById('number').value = numberID;
@@ -181,6 +182,66 @@ const email = sessionStorage.getItem('email');
 document.getElementById('email').value = email;
 document.getElementById('menuname').value = nameth;
 const nameFromSession = sessionStorage.getItem('displaynameth');
-        if (nameFromSession) {
+if (nameFromSession) {
             document.getElementById('menuname').innerHTML = `${nameFromSession} <a class="fa fa-user-circle"></a>`;
         }
+
+document.getElementById('submit-btn').addEventListener('click', function() {
+    // Get the form data
+    const formData = {
+        date: document.getElementById('date').value,
+        fullName: document.getElementById('fullname').value,
+        
+        studentId: document.getElementById('number').value,
+        year: document.getElementById('year').value,
+        
+        email: document.getElementById('email').value,
+        address: document.getElementById('no').value,
+        subdistrict: document.getElementById('sub-district').value,
+        district: document.getElementById('district').value,
+        province: document.getElementById('province').value,
+        studentPhone: document.getElementById('phone').value,
+        parentPhone: document.getElementById('parent').value,
+        advisor: document.getElementById('teacher').value,
+        department: document.getElementById('department').value,
+        prefix: document.getElementById('prefix').value,
+        semester: document.getElementById('semester').value,
+        academicYear: document.getElementById('uni-year').value,
+        courseCode: document.getElementById('course-code').value,
+        courseName: document.getElementById('course').value,
+        section: document.getElementById('Section').value,
+        reason: document.getElementById('reason').value,
+        requestType: document.getElementById('requesttype').value
+
+        
+    };
+
+    const requestId = new URLSearchParams(window.location.search).get('id'); // assuming id is passed as a query param
+
+    const url = requestId 
+        ? `http://localhost:8080/submit-request/update/${requestId}` // PUT or PATCH API endpoint for update
+        : `http://localhost:8080/submit-request`; // POST endpoint for new data
+
+    const method = requestId ? 'PUT' : 'POST'; // Use PUT for update, POST for new entry
+
+    // Send the data to the server
+    fetch(url, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(requestId ? 'คำร้องถูกอัพเดตเรียบร้อยแล้ว' : 'คำร้องถูกส่งเรียบร้อยแล้ว');
+        } else {
+            alert('เกิดข้อผิดพลาดในการส่งคำร้อง');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('เกิดข้อผิดพลาดในการส่งคำร้องแบบรับการตอบกลับฝั่ง server');
+    });
+});
