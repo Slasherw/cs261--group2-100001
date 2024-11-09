@@ -1,3 +1,4 @@
+
 //validate Date
 function validateDate() {
     const date = document.getElementById('date').value;
@@ -144,9 +145,9 @@ uniYear.addEventListener('input', validateSemester);
 
 
 //pop up for clickingตกลง
-document.getElementById('submit-btn').addEventListener('click', function() {
-    document.getElementById('popupsubmit').style.display = 'block';
-    });
+//document.getElementById('submit-btn').addEventListener('click', function() {
+    //document.getElementById('popupsubmit').style.display = 'block';
+    //});
 
 document.getElementById('saveedit').addEventListener('click', function() {
     alert('บันทึกแบบร่างสำเร็จ');
@@ -161,6 +162,8 @@ document.getElementById('sendrequest').addEventListener('click', function() {
 
 //pop up for clickingยกเลิก
 document.getElementById('cancel-btn').addEventListener('click', function() {
+    document.getElementById('popupsend').style.display = 'none';
+    document.getElementById('popupsent').style.display = 'none';
     document.getElementById('popupcancel').style.display = 'block';
     });
 
@@ -170,10 +173,10 @@ document.getElementById('no-btn').addEventListener('click', function() {
     });
 
 document.getElementById('yes-btn').addEventListener('click', function() {
-    alert('ยกเลิกสำเร็จ');
+    document.getElementById('cancel-work-btn').click();
     document.getElementById('popupcancel').style.display = 'none';
     });
-    const nameth = sessionStorage.getItem('displaynameth');
+const nameth = sessionStorage.getItem('displaynameth');
 document.getElementById('fullname').value = nameth;
 const numberID = sessionStorage.getItem('username');
 document.getElementById('number').value = numberID;
@@ -181,6 +184,127 @@ const email = sessionStorage.getItem('email');
 document.getElementById('email').value = email;
 document.getElementById('menuname').value = nameth;
 const nameFromSession = sessionStorage.getItem('displaynameth');
-        if (nameFromSession) {
+if (nameFromSession) {
             document.getElementById('menuname').innerHTML = `${nameFromSession} <a class="fa fa-user-circle"></a>`;
         }
+
+document.getElementById('submit-btn').addEventListener('click', function() {
+
+    document.getElementById('popupcancel').style.display = 'none';
+    document.getElementById('popupsent').style.display = 'none';
+    document.getElementById('popupsend').style.display = 'block';
+
+});
+
+document.getElementById('quit-btn').addEventListener('click', function() {
+
+    document.getElementById('popupsent').style.display = 'none';
+
+});
+
+document.getElementById('notsend-btn').addEventListener('click', function() {
+
+    document.getElementById('popupsend').style.display = 'none';
+
+});
+
+document.getElementById('send-btn').addEventListener('click', function() {
+    // Get the form data
+
+    const formData = {
+        date: document.getElementById('date').value,
+        fullName: document.getElementById('fullname').value,
+        
+        studentId: document.getElementById('number').value,
+        year: document.getElementById('year').value,
+        
+        email: document.getElementById('email').value,
+        address: document.getElementById('no').value,
+        subdistrict: document.getElementById('sub-district').value,
+        district: document.getElementById('district').value,
+        province: document.getElementById('province').value,
+        studentPhone: document.getElementById('phone').value,
+        parentPhone: document.getElementById('parent').value,
+        advisor: document.getElementById('teacher').value,
+        department: document.getElementById('department').value,
+        prefix: document.getElementById('prefix').value,
+        semester: document.getElementById('semester').value,
+        academicYear: document.getElementById('uni-year').value,
+        courseCode: document.getElementById('course-code').value,
+        courseName: document.getElementById('course').value,
+        section: document.getElementById('Section').value,
+        reason: document.getElementById('reason').value,
+        requestType: document.getElementById('requesttype').value
+
+        
+    };
+
+    const requestId = new URLSearchParams(window.location.search).get('id'); // assuming id is passed as a query param
+
+    const url = requestId 
+        ? `http://localhost:8080/submit-request/update/${requestId}` // PUT or PATCH API endpoint for update
+        : `http://localhost:8080/submit-request`; // POST endpoint for new data
+
+    const method = requestId ? 'PUT' : 'POST'; // Use PUT for update, POST for new entry
+
+    // Send the data to the server
+    fetch(url, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById('cancel-work-btn').click();
+            document.getElementById('popupsent-text').innerText = requestId ? 'คำร้องถูกอัพเดตเรียบร้อยแล้ว' : 'คำร้องถูกส่งเรียบร้อยแล้ว';
+            document.getElementById('popupsend').style.display = 'none';
+            document.getElementById('popupsent').style.display = 'block';            
+        } else {
+            alert('เกิดข้อผิดพลาดในการส่งคำร้อง');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('เกิดข้อผิดพลาดในการส่งคำร้องแบบรับการตอบกลับฝั่ง server');
+    });
+});
+
+
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+    if (id == null) return;
+
+    fetch('http://localhost:8080/submit-request/info/' + id)
+    .then(response => response.json())
+    .then(response => {
+        if (response.message != null) return;
+        document.getElementById('date').value = response.date;
+        document.getElementById('fullname').value = response.fullName;
+        
+        document.getElementById('number').value = response.studentId;
+        document.getElementById('year').value = response.year;
+        
+        document.getElementById('email').value = response.email;
+        document.getElementById('no').value = response.address;
+        document.getElementById('sub-district').value = response.subdistrict;
+        document.getElementById('district').value = response.district;
+        document.getElementById('province').value = response.province;
+        document.getElementById('phone').value = response.studentPhone;
+        document.getElementById('parent').value = response.parentPhone;
+        document.getElementById('teacher').value = response.advisor;
+        document.getElementById('department').value = response.department;
+        document.getElementById('prefix').value = response.prefix;
+        document.getElementById('semester').value = response.semester;
+        document.getElementById('uni-year').value = response.academicYear;
+        document.getElementById('course-code').value = response.courseCode;
+        document.getElementById('course').value = response.courseName;
+        document.getElementById('Section').value = response.section;
+        document.getElementById('reason').value = response.reason;
+        document.getElementById('requesttype').value = response.requestType;
+    })
+
+}

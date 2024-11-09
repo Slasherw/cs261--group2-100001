@@ -12,7 +12,7 @@
   
   
   body{
-      background-image: url('/Frontend/public/img/request-bg.jpg');
+      background-image: url('../img/request-bg.jpg');
       background-size: cover;
       font-family: Arial, sans-serif;
       margin: 0;
@@ -20,27 +20,25 @@
   }
   
   .container {
-      width: 60%;
-      max-width: 800px;
-      margin: 50px auto;
-      margin-top: 0px;
-      margin-bottom: 0px;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  
-  
-      padding-left: 50px;
-      padding-right: 50px;
+    display: table; /* ให้ขนาด container ขยายตามขนาดของตารางภายใน */
+    width: auto; /* ให้ความกว้างปรับตามเนื้อหาภายใน */
+    height: auto; /* ให้ความสูงปรับตามเนื้อหาภายใน */
+    margin: 0 auto; /* จัดตำแหน่งให้อยู่ตรงกลาง */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+  .flex-container {
+    display: flex;
+    align-items: stretch; /* ให้ทั้งสองขยายความสูงเท่ากัน */
+}
   .menubar {
-      background-color: #C3002F;
-      width: 200px;
-      min-height: 100vh;
-      padding-top: 20px;
-      align-items: center;
+    background-color: #C3002F;
+    width: 200px;
+    
+    padding-top: 20px;
+    align-items: center;
   }
   
   .menubar a {
@@ -49,18 +47,18 @@
   }
   
   .menubar button {
-      display: block;
-      width: 90%;
-      margin: 10px auto;
-      padding: 10px;
-      background-color: #fff;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      text-align: center;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-size: 15px;
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 15px;
   }
   
   .menubar button:hover {
@@ -69,10 +67,11 @@
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
   }
   #divfornothead{
-      display:flex; 
-      align-items: center;
+    display: flex;
+    align-items: flex-start; /* ทำให้เมนูและคอนเทนเนอร์อยู่ที่ขอบบนสุด */
+    justify-content: center;
   }
-  
+ 
   /* Head*/
   .header {
       display: flex;
@@ -93,6 +92,7 @@
   }
   #icon{
       text-align: right;
+      color: black;
   
   }
   .header p{
@@ -167,3 +167,18 @@
       border-radius: 5px;
       margin-right: 50px;
   }
+
+  #saveedit, #yes-btn, .yes-btn {
+    background-color: #FFD13F;
+}
+#saveedit:hover, .yes-btn:hover, #yes-btn:hover{
+    background-color: #f3d265;
+    box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
+}
+#sendrequest, #no-btn, .no-btn {
+    background-color: #C3002F;
+}
+#sendrequest:hover, #no-btn:hover, .no-btn:hover{
+    background-color: #d4264f;
+    box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
+}

@@ -22,3 +22,8 @@ document.getElementById('userDetails').innerHTML = `
 document.getElementById('welcomeMessage').innerHTML = `Welcome ${displayname_th} to Website`;
 const nameFromSession = sessionStorage.getItem('displaynameth');
 document.getElementById('menuname').innerHTML = `${displayname_th} <a class="fa fa-user-circle"></a>`;
+const urlParams = new URLSearchParams(window.location.search);
+const role = urlParams.get('role');
+if (role === "teacher") {
+    window.location.href = "allrequest.html";
+}
