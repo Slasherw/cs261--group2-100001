@@ -36,7 +36,7 @@
   .menubar {
     background-color: #C3002F;
     width: 200px;
-    
+    min-height: 100vh;
     padding-top: 20px;
     align-items: center;
   }

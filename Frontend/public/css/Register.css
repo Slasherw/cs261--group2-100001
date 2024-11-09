@@ -25,8 +25,7 @@
 
  /* กำหนดสไตล์ให้กับรูปโลโก้ใน header */
  .header-info img{
-   width: 100px;
-   margin-right: 10px;
+   width: 500px;
  }
 
  /* สไตล์สำหรับ container ของ header */
