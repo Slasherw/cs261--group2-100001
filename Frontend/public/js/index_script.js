@@ -47,8 +47,33 @@ function submitLogin(){
             sessionStorage.setItem('type', data.type);
             sessionStorage.setItem('statustu', data.tu_status);
 
+
+
+            fetch("http://localhost:8080/add-user", {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  username: data.username,
+                  email: data.email,
+                  displayname: data.displayname_en,
+                  displaynameth: data.displayname_th,
+                  status1: data.statusid,
+                  department: data.department,
+                  faculty: data.faculty,
+                  type: data.type,
+                  statustu: data.tu_status
+                })
+              })
+                .catch(error => {
+                  console.log('Error:', error); // Handle any errors
+                });
+              
+
             // เปลี่ยนหน้าไปยัง lobby.html
-            window.location.href = 'html/lobby.html'; }
+            window.location.href = 'html/lobby.html'; 
+        }
     })
     .catch(error => {
         console.error('Error:', error)
@@ -93,5 +118,20 @@ function validatePassword() {
     else{
         errorMessage.innerText = '';
         return true;
+    }
+}
+
+var show_password = false;
+
+function togglePassword() {
+    show_password = !show_password;
+    if (show_password) {
+        // to show
+        document.getElementById('password').type = 'text';
+        document.getElementById('togglePassword').innerText = 'Hide';
+    } else {
+        // to hide
+        document.getElementById('password').type = 'password';
+        document.getElementById('togglePassword').innerText = 'Show';
     }
 }

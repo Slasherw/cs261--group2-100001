@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/submit-request")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -23,14 +25,23 @@ public class FormController {
         //return ResponseEntity.ok("Request submitted successfully");
         return ResponseEntity.ok(Collections.singletonMap("success", true));
     }
-    @GetMapping(value = "/student/{studentId}", produces = "application/json;charset=UTF-8")
 
+    @GetMapping(value = "/student/{studentId}", produces = "application/json;charset=UTF-8")
     public ResponseEntity<?> getFormByStudentId(@PathVariable String studentId) {
         List<Form> forms = formRepository.findByStudentId(studentId);
         if (forms.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "No records found"));
         }
         return ResponseEntity.ok(forms);
+    }
+
+    @GetMapping(value = "/info/{requestId}", produces = "application/json;charset=UTF-8")
+    public ResponseEntity<?> getFormById(@PathVariable Long requestId) {
+        Optional<Form> forms = formRepository.findById(requestId);
+        if (forms.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "No records found"));
+        }
+        return ResponseEntity.ok(forms.get());
     }
 
     @DeleteMapping("/delete/{id}")

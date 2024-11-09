@@ -162,6 +162,8 @@ document.getElementById('sendrequest').addEventListener('click', function() {
 
 //pop up for clickingยกเลิก
 document.getElementById('cancel-btn').addEventListener('click', function() {
+    document.getElementById('popupsend').style.display = 'none';
+    document.getElementById('popupsent').style.display = 'none';
     document.getElementById('popupcancel').style.display = 'block';
     });
 
@@ -171,7 +173,7 @@ document.getElementById('no-btn').addEventListener('click', function() {
     });
 
 document.getElementById('yes-btn').addEventListener('click', function() {
-    alert('ยกเลิกสำเร็จ');
+    document.getElementById('cancel-work-btn').click();
     document.getElementById('popupcancel').style.display = 'none';
     });
 const nameth = sessionStorage.getItem('displaynameth');
@@ -187,7 +189,28 @@ if (nameFromSession) {
         }
 
 document.getElementById('submit-btn').addEventListener('click', function() {
+
+    document.getElementById('popupcancel').style.display = 'none';
+    document.getElementById('popupsent').style.display = 'none';
+    document.getElementById('popupsend').style.display = 'block';
+
+});
+
+document.getElementById('quit-btn').addEventListener('click', function() {
+
+    document.getElementById('popupsent').style.display = 'none';
+
+});
+
+document.getElementById('notsend-btn').addEventListener('click', function() {
+
+    document.getElementById('popupsend').style.display = 'none';
+
+});
+
+document.getElementById('send-btn').addEventListener('click', function() {
     // Get the form data
+
     const formData = {
         date: document.getElementById('date').value,
         fullName: document.getElementById('fullname').value,
@@ -235,7 +258,10 @@ document.getElementById('submit-btn').addEventListener('click', function() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert(requestId ? 'คำร้องถูกอัพเดตเรียบร้อยแล้ว' : 'คำร้องถูกส่งเรียบร้อยแล้ว');
+            document.getElementById('cancel-work-btn').click();
+            document.getElementById('popupsent-text').innerText = requestId ? 'คำร้องถูกอัพเดตเรียบร้อยแล้ว' : 'คำร้องถูกส่งเรียบร้อยแล้ว';
+            document.getElementById('popupsend').style.display = 'none';
+            document.getElementById('popupsent').style.display = 'block';            
         } else {
             alert('เกิดข้อผิดพลาดในการส่งคำร้อง');
         }
@@ -245,3 +271,40 @@ document.getElementById('submit-btn').addEventListener('click', function() {
         alert('เกิดข้อผิดพลาดในการส่งคำร้องแบบรับการตอบกลับฝั่ง server');
     });
 });
+
+
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+    if (id == null) return;
+
+    fetch('http://localhost:8080/submit-request/info/' + id)
+    .then(response => response.json())
+    .then(response => {
+        if (response.message != null) return;
+        document.getElementById('date').value = response.date;
+        document.getElementById('fullname').value = response.fullName;
+        
+        document.getElementById('number').value = response.studentId;
+        document.getElementById('year').value = response.year;
+        
+        document.getElementById('email').value = response.email;
+        document.getElementById('no').value = response.address;
+        document.getElementById('sub-district').value = response.subdistrict;
+        document.getElementById('district').value = response.district;
+        document.getElementById('province').value = response.province;
+        document.getElementById('phone').value = response.studentPhone;
+        document.getElementById('parent').value = response.parentPhone;
+        document.getElementById('teacher').value = response.advisor;
+        document.getElementById('department').value = response.department;
+        document.getElementById('prefix').value = response.prefix;
+        document.getElementById('semester').value = response.semester;
+        document.getElementById('uni-year').value = response.academicYear;
+        document.getElementById('course-code').value = response.courseCode;
+        document.getElementById('course').value = response.courseName;
+        document.getElementById('Section').value = response.section;
+        document.getElementById('reason').value = response.reason;
+        document.getElementById('requesttype').value = response.requestType;
+    })
+
+}

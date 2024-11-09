@@ -35,10 +35,11 @@
     <div id="divfornothead" class="flex-container">
 
         <div id="menubar" class="menubar">
-            <button><a href="../html/request.html">เขียนคำร้อง</a></button>
-            <button><a href="">ประวัติการยื่นคำร้อง</a></button>
-            
             <button><a href="../html/lobby.html">หน้าหลัก</a></button>
+            <button><a href="../html/request.html">เขียนคำร้อง</a></button>
+            <button><a href="../html/history.html">ประวัติการยื่นคำร้อง</a></button>
+            <button><a href="#">แบบร่าง</a></button>
+            <button><a href="#">สถานะคำร้อง</a></button> 
         </div>
 
         <div class="container">
@@ -56,6 +57,17 @@
         </div>
 
     </div>
+
+    <div class="popup" id="submit-request-popup">
+        <p>อนุมัติคำร้องเรียบร้อยแล้ว</p>
+        <button class="yes-btn" onclick="location.reload();">ตกลง</button>
+    </div>
+
+    <div class="popup" id="decline-request-popup">
+        <p>ปฏิเสธคำร้องเรียบร้อยแล้ว</p>
+        <button class="yes-btn" onclick="location.reload();">ตกลง</button>
+    </div>
+
     <script src="../js/allrequest.js"></script>
 </body>
 

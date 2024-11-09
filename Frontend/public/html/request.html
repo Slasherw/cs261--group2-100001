@@ -40,11 +40,11 @@
     <div id="divfornothead">
 
         <div id="menubar" class="menubar">
+            <button><a href="../html/lobby.html">หน้าหลัก</a></button>
             <button><a href="../html/request.html">เขียนคำร้อง</a></button>
             <button><a href="../html/history.html">ประวัติการยื่นคำร้อง</a></button>
-            
-            
-            <button><a href="../html/lobby.html">หน้าหลัก</a></button>
+            <button><a href="#">แบบร่าง</a></button>
+            <button><a href="#">สถานะคำร้อง</a></button> 
         </div>
 
         <div class="container" >
@@ -147,7 +147,8 @@
 
                 <div class="buttons">
                     <button type="button" id="submit-btn">ตกลง</button>
-                    <button type="reset" id="cancel-btn">ยกเลิก</button>
+                    <button type="button" id="cancel-btn">ยกเลิก</button>
+                    <button type="reset" id="cancel-work-btn" hidden></button>
                 </div>
             </form>
 
@@ -158,6 +159,17 @@
             <p>บันทึกแบบร่าง หรือ ส่งคำร้อง ?</p>
             <button id="saveedit">บันทึกแบบร่าง</button>
             <button id="sendrequest">ส่งคำร้อง</button>
+        </div>
+
+        <div id="popupsend" class="popup">
+            <p>ยืนยันการส่งคำร้อง</p>
+            <button id="send-btn" class="yes-btn">ยืนยันการส่ง</button>
+            <button id="notsend-btn" class="no-btn">ยกเลิก</button>
+        </div>
+
+        <div id="popupsent" class="popup">
+            <p id="popupsent-text">ส่งคำร้องเรียบร้อยแล้ว</p>
+            <button id="quit-btn" class="yes-btn">รับทราบ</button>
         </div>
 
         <div id="popupcancel" class="popup">

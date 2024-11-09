@@ -58,7 +58,7 @@ const numberID = sessionStorage.getItem('username');
                     <td id="status-${form.id}" ${statusColor}>${form.status}</td>
                     <td>
                         <!-- ปุ่มลบสำหรับแต่ละแถว -->
-                        <button class="btn btn-danger" onclick="deleteForm(${form.id})">ยกเลิกคำร้อง</button>
+                        <button class="btn btn-danger" onclick="deleteFormPopup(${form.id})">ยกเลิกคำร้อง</button>
                         
                     </td>
                     <td>
@@ -73,9 +73,37 @@ const numberID = sessionStorage.getItem('username');
         console.error("Error:", error);
     });
 
+    let formId = null;
+
     // ฟังก์ชั่นสำหรับลบคำร้อง
-    function deleteForm(id) {
-        fetch(`http://localhost:8080/submit-request/delete/${id}`, {
+    function deleteFormPopup(id) {
+        
+        formId = id;
+        document.getElementById('decline-popup-success').style.display = 'none';
+        document.getElementById('decline-popup').style.display = 'block';
+
+    }
+
+    document.getElementById('decline').addEventListener('click', function() {
+
+        document.getElementById('decline-popup').style.display = 'none';
+
+    });
+
+    document.getElementById('confirm').addEventListener('click', function() {
+
+        document.getElementById('decline-popup').style.display = 'none';
+        deleteForm();
+
+    });
+
+    document.getElementById('confirm2').addEventListener('click', function() {
+        location.reload();
+    })
+
+    function deleteForm() {
+
+        fetch(`http://localhost:8080/submit-request/delete/${formId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -86,8 +114,11 @@ const numberID = sessionStorage.getItem('username');
             return response.json();
         })
         .then(data => {
-            alert(data.message); // แจ้งข้อความหลังจากลบข้อมูล
-            location.reload(); // รีเฟรชหน้าจอเพื่อแสดงข้อมูลล่าสุด
+
+            document.getElementById('decline-popup-success').style.display = 'block';
+
+            //alert(data.message); // แจ้งข้อความหลังจากลบข้อมูล
+            //location.reload(); // รีเฟรชหน้าจอเพื่อแสดงข้อมูลล่าสุด
         })
         .catch(error => {
             alert("Error deleting request");

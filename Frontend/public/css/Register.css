@@ -167,5 +167,22 @@
   margin-right: 60px;
   color: #F52A4F;
 }
-   
-   
+ 
+/* Toggle password css */
+.togglePassword {
+  background-color: #E60E56;
+  height: 40px;
+  text-align: center;
+  color: white;
+  padding: 6px 4px;
+  margin-left: 5px;
+  border-radius: 5px;
+  width: 80px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.togglePassword:hover {
+  background-color: #ac1044;
+  transition: 0.1s;
+}

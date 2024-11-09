@@ -73,8 +73,11 @@ function admitRequest(id) {
     })
     .then(response => response.json())
     .then(data => {
-        alert("คำร้องถูกอนุมัติแล้ว"); // แจ้งผู้ใช้ว่าคำร้องถูกอนุมัติแล้ว
-        location.reload(); // รีเฟรชหน้าเว็บหลังจากเปลี่ยนสถานะเสร็จ
+
+        document.getElementById('decline-request-popup').style.display = 'none';
+        document.getElementById('submit-request-popup').style.display = 'block';
+        //alert("คำร้องถูกอนุมัติแล้ว"); // แจ้งผู้ใช้ว่าคำร้องถูกอนุมัติแล้ว
+        //location.reload(); // รีเฟรชหน้าเว็บหลังจากเปลี่ยนสถานะเสร็จ
         
         
     })
@@ -91,8 +94,12 @@ function admitRequest(id) {
     })
     .then(response => response.json())
     .then(data => {
-        alert("คำร้องถูกปฏิเสธแล้ว"); // แจ้งผู้ใช้ว่าคำร้องถูกปฏิเสธแล้ว
-        location.reload(); // รีเฟรชหน้าเว็บหลังจากเปลี่ยนสถานะเสร็จ
+        
+        document.getElementById('submit-request-popup').style.display = 'none';
+        document.getElementById('decline-request-popup').style.display = 'block';
+        
+        //alert("คำร้องถูกปฏิเสธแล้ว"); // แจ้งผู้ใช้ว่าคำร้องถูกปฏิเสธแล้ว
+        //location.reload(); // รีเฟรชหน้าเว็บหลังจากเปลี่ยนสถานะเสร็จ
     })
     .catch(error => {
         console.error("Error denying request:", error);

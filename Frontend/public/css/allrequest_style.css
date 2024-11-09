@@ -167,3 +167,19 @@
       border-radius: 5px;
       margin-right: 50px;
   }
+
+  
+  #saveedit, #yes-btn, .yes-btn {
+    background-color: #FFD13F;
+}
+#saveedit:hover, .yes-btn:hover, #yes-btn:hover{
+    background-color: #f3d265;
+    box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
+}
+#sendrequest, #no-btn, .no-btn {
+    background-color: #C3002F;
+}
+#sendrequest:hover, #no-btn:hover, .no-btn:hover{
+    background-color: #d4264f;
+    box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
+}
