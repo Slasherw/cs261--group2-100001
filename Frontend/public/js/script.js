@@ -18,12 +18,14 @@ function submitLogin(){
     }
 
     url = 'https://restapi.tu.ac.th/api/v1/auth/Ad/verify';
+    //ใส่ Token ใช้งาน API
+    const TOKEN = 'TUccc18e1b7e74094e279c457a405467d2e89eb803f6c5f72da823d99b0c9b9e013e310e0adc1237e1853a4a0f249788c2';
 
     fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Application-Key': '{token}'//ใส่ Token ใช้งาน API
+            'Application-Key': TOKEN 
        },
        body: JSON.stringify({"UserName": username, "PassWord": password})
     })
