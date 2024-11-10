@@ -20,7 +20,7 @@ const numberID = sessionStorage.getItem('username');
                     <tr>
                         <th>ID</th>
                         <th>ชื่อ</th>
-                        <th>วันที่</th>
+                        <th>วันที่ยื่น</th>
                         
                         <th>เหตุผลที่ยื่นคำร้อง</th>
                         <th>อีเมลล์</th>
@@ -28,7 +28,7 @@ const numberID = sessionStorage.getItem('username');
                         <th>สถานะ</th>
                         <th>Action</th>
                         <th>Action</th>
-                        
+                        <th>ActionDate</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">
@@ -64,6 +64,7 @@ const numberID = sessionStorage.getItem('username');
                     <td>
                         <button class="btn btn-warning ml-2" onclick="editForm(${form.id})">แก้ไขคำร้อง</button>
                     </td>
+                    <td>${form.actiondate}</td>
                 </tr>
             `;
         });

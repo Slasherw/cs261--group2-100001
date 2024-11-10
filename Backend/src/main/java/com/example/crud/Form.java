@@ -78,6 +78,18 @@ public class Form {
 
     @Column(name = "status", nullable = false)
     private String status;
+
+    @Column(name = "Actiondate")
+    private String Actiondate;
+
+    public String getActiondate() {
+        return Actiondate;
+    }
+
+    public void setActiondate(String Actiondate) {
+        this.Actiondate = Actiondate;
+    }
+
     public String getStatus() {
         return status;
     }

@@ -19,6 +19,9 @@ public class FormController {
         if (form.getStatus() == null) {
             form.setStatus("ยังไม่ถูกดำเนินการ");
         }
+        if (form.getActiondate() == null) {
+            form.setActiondate("-");
+        }
         // Save the form data to the database
         formRepository.save(form);
 
@@ -96,7 +99,7 @@ public class FormController {
         return ResponseEntity.ok(forms);
     }
     @PutMapping("/admit/{id}")
-    public ResponseEntity<?> admitRequest(@PathVariable Long id) {
+    public ResponseEntity<?> admitRequest(@PathVariable Long id , @RequestParam String date) {
         // ตรวจสอบว่า form ที่มี id นี้มีอยู่หรือไม่
         if (!formRepository.existsById(id)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "Form not found"));
@@ -105,12 +108,13 @@ public class FormController {
         // ดึงข้อมูลคำร้องจากฐานข้อมูลและอัปเดตสถานะเป็น "อนุมัติคำร้อง"
         Form form = formRepository.findById(id).get();
         form.setStatus("อนุมัติคำร้อง");
+        form.setActiondate(date);
         formRepository.save(form);
 
         return ResponseEntity.ok(Collections.singletonMap("success", true));
     }
     @PutMapping("/deny/{id}")
-    public ResponseEntity<?> denyRequest(@PathVariable Long id) {
+    public ResponseEntity<?> denyRequest(@PathVariable Long id , @RequestParam String date) {
         // ตรวจสอบว่า form ที่มี id นี้มีอยู่หรือไม่
         if (!formRepository.existsById(id)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "Form not found"));
@@ -119,6 +123,7 @@ public class FormController {
         // ดึงข้อมูลคำร้องจากฐานข้อมูลและอัปเดตสถานะเป็น "ปฏิเสธคำร้อง"
         Form form = formRepository.findById(id).get();
         form.setStatus("ปฏิเสธคำร้อง");
+        form.setActiondate(date);
         formRepository.save(form);
 
         return ResponseEntity.ok(Collections.singletonMap("success", true));

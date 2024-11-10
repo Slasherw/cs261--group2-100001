@@ -23,12 +23,13 @@ function displayRequests(requests) {
                 <th>ID</th>
                 <th>เลขทะเบียน</th>
                 <th>ชื่อ</th>
-                <th>วัน</th>
+                <th>วันที่ยื่น</th>
                 <th>เหตุผลคำร้อง</th>
                 <th>ประเภทคำร้อง</th>
                 <th>Status</th>
                 <th>Action</th>
                 <th>Action</th>
+                <th>วันที่ที่ตอบรับ</th>
             </tr>
         </thead>
         <tbody>`;
@@ -58,6 +59,9 @@ function displayRequests(requests) {
                     <button class="btn btn-danger ml-2" onclick="denyRequest(${request.id})">Deny</button>
                     
                 </td>
+                <td>
+                <input type="date" id="date-${request.id}"  class="form-control">
+                </td>
             </tr>`;
     });
 
@@ -65,7 +69,13 @@ function displayRequests(requests) {
     requestDetails.innerHTML = tableHTML;
 }
 function admitRequest(id) {
-    fetch(`http://localhost:8080/submit-request/admit/${id}`, {
+    const selectedDate = document.getElementById(`date-${id}`).value;
+
+    if (!selectedDate) {
+        alert("กรุณาเลือกวันที่ก่อนที่จะอนุมัติคำร้อง");
+        return;
+    }
+    fetch(`http://localhost:8080/submit-request/admit/${id}?date=${selectedDate}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -86,11 +96,18 @@ function admitRequest(id) {
     });
     
 }function denyRequest(id) {
-    fetch(`http://localhost:8080/submit-request/deny/${id}`, {
+    const selectedDate = document.getElementById(`date-${id}`).value;
+
+    if (!selectedDate) {
+        alert("กรุณาเลือกวันที่ก่อนที่จะอนุมัติคำร้อง");
+        return;
+    }
+    fetch(`http://localhost:8080/submit-request/deny/${id}?date=${selectedDate}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        
     })
     .then(response => response.json())
     .then(data => {
