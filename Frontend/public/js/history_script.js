@@ -140,3 +140,10 @@ const numberID = sessionStorage.getItem('username');
 const displayname_th = sessionStorage.getItem('displaynameth');
 const nameFromSession = sessionStorage.getItem('displaynameth');
 document.getElementById('menuname').innerHTML = `${displayname_th} <a class="fa fa-user-circle" style="color: black;"></a>`;
+
+document.getElementById('logout-button').addEventListener('click', function() {
+    // ลบข้อมูลทั้งหมดใน sessionStorage
+    sessionStorage.clear();
+  
+    window.location.href = '../index.html'; 
+});
