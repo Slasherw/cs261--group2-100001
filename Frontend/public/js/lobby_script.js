@@ -27,3 +27,10 @@ const role = urlParams.get('role');
 if (role === "teacher") {
     window.location.href = "allrequest.html";
 }
+document.getElementById('logout-button').addEventListener('click', function() {
+    // ลบข้อมูลทั้งหมดใน sessionStorage
+    sessionStorage.clear();
+
+  
+    window.location.href = '../index.html'; 
+});

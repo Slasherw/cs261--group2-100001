@@ -46,6 +46,20 @@ const numberID = sessionStorage.getItem('username');
         if (form.status === "ปฏิเสธคำร้อง") {
             statusColor = "style='color: red;'"; // กำหนดสีเขียวถ้าสถานะเป็น "อนุมัติคำร้อง"
         }
+        const actionButtons = (form.status !== "อนุมัติคำร้อง" && form.status !== "ปฏิเสธคำร้อง")
+        ? `
+            <td>
+                <button class="btn btn-danger" onclick="deleteFormPopup(${form.id})">ยกเลิกคำร้อง</button>
+            </td>
+            <td>
+                <button class="btn btn-warning ml-2" onclick="editForm(${form.id})">แก้ไขคำร้อง</button>
+            </td>
+        `
+        : `
+            <td></td>
+            <td></td>
+        `;
+        
             tableBody.innerHTML += `
                 <tr>
                     <td>${form.id}</td>
@@ -56,15 +70,8 @@ const numberID = sessionStorage.getItem('username');
                     <td>${form.email}</td>
                     <td>${form.requestType}</td>
                     <td id="status-${form.id}" ${statusColor}>${form.status}</td>
-                    <td>
-                        <!-- ปุ่มลบสำหรับแต่ละแถว -->
-                        <button class="btn btn-danger" onclick="deleteFormPopup(${form.id})">ยกเลิกคำร้อง</button>
-                        
-                    </td>
-                    <td>
-                        <button class="btn btn-warning ml-2" onclick="editForm(${form.id})">แก้ไขคำร้อง</button>
-                    </td>
-                    <td>${form.actiondate}</td>
+                ${actionButtons}
+                <td>${form.actiondate}</td>
                 </tr>
             `;
         });
