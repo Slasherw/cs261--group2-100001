@@ -47,9 +47,7 @@ function submitLogin(){
             sessionStorage.setItem('type', data.type);
             sessionStorage.setItem('statustu', data.tu_status);
 
-
-
-            fetch("http://localhost:8080/add-user", {
+            fetch("http://localhost:8080/profile/adduser", {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
@@ -57,13 +55,13 @@ function submitLogin(){
                 body: JSON.stringify({
                   username: data.username,
                   email: data.email,
-                  displayname: data.displayname_en,
-                  displaynameth: data.displayname_th,
+                  displayname_en: data.displayname_en,
+                  displayname_th: data.displayname_th,
                   status1: data.statusid,
                   department: data.department,
                   faculty: data.faculty,
                   type: data.type,
-                  statustu: data.tu_status
+                  tu_status: data.tu_status
                 })
               })
                 .catch(error => {
