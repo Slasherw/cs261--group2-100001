@@ -149,17 +149,6 @@ uniYear.addEventListener('input', validateSemester);
     //document.getElementById('popupsubmit').style.display = 'block';
     //});
 
-document.getElementById('saveedit').addEventListener('click', function() {
-    alert('บันทึกแบบร่างสำเร็จ');
-    document.getElementById('popupsubmit').style.display = 'none';
-    });
-
-document.getElementById('sendrequest').addEventListener('click', function() {
-    alert('ส่งคำร้องสำเร็จ');
-    document.getElementById('popupsubmit').style.display = 'none';
-    });
-
-
 //pop up for clickingยกเลิก
 document.getElementById('cancel-btn').addEventListener('click', function() {
     document.getElementById('popupsend').style.display = 'none';
@@ -208,8 +197,19 @@ document.getElementById('notsend-btn').addEventListener('click', function() {
 
 });
 
-document.getElementById('send-btn').addEventListener('click', function() {
-    // Get the form data
+document.getElementById('savedraft-btn').addEventListener('click', function() {
+
+    document.getElementById('savedraftpopup').style.display = 'block';
+
+});
+
+document.getElementById('notsavedraft-btn').addEventListener('click', function() {
+
+    document.getElementById('savedraftpopup').style.display = 'none';
+
+});
+
+document.getElementById('realsavedraft-btn').addEventListener('click', function() {
 
     const formData = {
         date: document.getElementById('date').value,
@@ -242,10 +242,71 @@ document.getElementById('send-btn').addEventListener('click', function() {
     const requestId = new URLSearchParams(window.location.search).get('id'); // assuming id is passed as a query param
 
     const url = requestId 
-        ? `http://localhost:8080/submit-request/update/${requestId}` // PUT or PATCH API endpoint for update
-        : `http://localhost:8080/submit-request`; // POST endpoint for new data
+        ? `http://localhost:8080/draft-request/update/${requestId}` // PUT or PATCH API endpoint for update
+        : `http://localhost:8080/draft-request`; // POST endpoint for new data
 
     const method = requestId ? 'PUT' : 'POST'; // Use PUT for update, POST for new entry
+
+    // Send the data to the server
+    fetch(url, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('savedraftpopup').style.display = 'none';
+        if (data.success) {
+            document.getElementById('cancel-work-btn').click();
+            document.getElementById('popupsent-text').innerText = requestId ? 'คำร้องถูกอัพเดตเรียบร้อยแล้ว' : 'คำร้องถูกส่งเรียบร้อยแล้ว';
+            document.getElementById('popupsend').style.display = 'none';
+            document.getElementById('popupsent').style.display = 'block';            
+        } else {
+            alert('เกิดข้อผิดพลาดในการส่งคำร้อง');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('เกิดข้อผิดพลาดในการส่งคำร้องแบบรับการตอบกลับฝั่ง server');
+    });
+
+});
+
+document.getElementById('send-btn').addEventListener('click', function() {
+    // Get the form data
+
+    const formData = {
+        date: document.getElementById('date').value,
+        fullName: document.getElementById('fullname').value,
+        
+        studentId: document.getElementById('number').value,
+        year: document.getElementById('year').value,
+        
+        email: document.getElementById('email').value,
+        address: document.getElementById('no').value,
+        subdistrict: document.getElementById('sub-district').value,
+        district: document.getElementById('district').value,
+        province: document.getElementById('province').value,
+        studentPhone: document.getElementById('phone').value,
+        parentPhone: document.getElementById('parent').value,
+        advisor: document.getElementById('teacher').value,
+        department: document.getElementById('department').value,
+        prefix: document.getElementById('prefix').value,
+        semester: document.getElementById('semester').value,
+        academicYear: document.getElementById('uni-year').value,
+        courseCode: document.getElementById('course-code').value,
+        courseName: document.getElementById('course').value,
+        section: document.getElementById('Section').value,
+        reason: document.getElementById('reason').value,
+        requestType: document.getElementById('requesttype').value
+
+        
+    };
+    const url = `http://localhost:8080/submit-request`; // POST endpoint for new data
+
+    const method = 'POST'; // Use PUT for update, POST for new entry
 
     // Send the data to the server
     fetch(url, {
@@ -278,7 +339,7 @@ window.onload = function() {
     const id = urlParams.get("id");
     if (id == null) return;
 
-    fetch('http://localhost:8080/submit-request/info/' + id)
+    fetch('http://localhost:8080/draft-request/info/' + id)
     .then(response => response.json())
     .then(response => {
         if (response.message != null) return;
