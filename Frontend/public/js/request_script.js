@@ -246,17 +246,25 @@ document.getElementById('send-btn').addEventListener('click', function() {
         : `http://localhost:8080/submit-request`; // POST endpoint for new data
 
     const method = requestId ? 'PUT' : 'POST'; // Use PUT for update, POST for new entry
+    const formData_2 = new FormData();
+
+    formData_2.append("data", new Blob([JSON.stringify(formData)], { type: "application/json" }));
+    const fileInput = document.querySelector('#attach_files');
+    const files = fileInput ? fileInput.files : null;
+    if (files && files.length > 0) {
+        for (let i = 0; i < files.length; i++) {
+            formData_2.append("file", files[i]);
+        }
+    }
 
     // Send the data to the server
     fetch(url, {
         method: method,
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        body: requestId ? JSON.stringify(formData) : formData_2
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if (data.success) {
             document.getElementById('cancel-work-btn').click();
             document.getElementById('popupsent-text').innerText = requestId ? 'คำร้องถูกอัพเดตเรียบร้อยแล้ว' : 'คำร้องถูกส่งเรียบร้อยแล้ว';

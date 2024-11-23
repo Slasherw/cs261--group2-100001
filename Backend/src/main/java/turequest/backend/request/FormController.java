@@ -3,6 +3,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
+import turequest.backend.filestorage.FileServerRepository;
+import turequest.backend.filestorage.FileServerService;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -14,14 +18,25 @@ public class FormController {
     @Autowired
     private FormRepository formRepository;
 
+    @Autowired
+    private FileServerService fileServerService;
+
     @PostMapping
-    public ResponseEntity<?> submitRequest(@RequestBody Form form) {
+    public ResponseEntity<?> submitRequest(@RequestPart("data") Form form,
+                                           @RequestPart("file") MultipartFile[] files) {
         if (form.getStatus() == null) {
             form.setStatus("ยังไม่ถูกดำเนินการ");
         }
         if (form.getActiondate() == null) {
             form.setActiondate("-");
         }
+
+        if (files.length > 5) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.singletonMap("message", "File limits up to 5 files"));
+
+        Long[] uploaded = {};
+        if (files.length != 0) uploaded = fileServerService.upload(files);
+        form.setAttachFiles(uploaded);
+
         // Save the form data to the database
         formRepository.save(form);
 
