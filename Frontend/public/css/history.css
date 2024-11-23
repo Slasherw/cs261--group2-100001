@@ -10,7 +10,6 @@
       padding: 0;
   }*/
   
-  
   body{
       background-image: url('../img/request-bg.jpg');
       background-size: cover;
@@ -29,6 +28,11 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+  .container h1{ /*if use boostrap*/
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+  }
   .flex-container {
     display: flex;
     align-items: stretch; /* ให้ทั้งสองขยายความสูงเท่ากัน */
@@ -36,7 +40,7 @@
   .menubar {
     background-color: #C3002F;
     width: 200px;
-    
+    min-height: 100vh;
     padding-top: 20px;
     align-items: center;
   }
@@ -80,17 +84,21 @@
       font-size: 1.5em;
       font-weight: bold;
       color: #C3002F;
+
+/*      use boostrap*/
+      padding-bottom: 15px;
   }
   
   .header img {
-      height: 50px;
       margin-right: 10px;
-      width: 50%;
       height: auto;
       padding-top: 20px;
       padding-left: 30px;
+    /*      width: 50%;*/
+/*      use boostrap*/
+      width: 53.5%;
   }
-  #icon{
+  #icon a{
       text-align: right;
       color: black;
   
@@ -104,7 +112,10 @@
       padding-right: 8px;
       padding-left: 8px;
   }
-  
+  #menuname{ /*if use boostrap*/
+    padding-top: 25px;
+    padding-bottom: 10px;
+  }
   
   
   /*buttonss*/
@@ -142,33 +153,33 @@
   }
   
 
-  /*popup*/
-  .popup {
-      display: none;
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      border: 1px solid #ccc;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-  
-  }
-  
-  .popup button {
-      color: #fff;
-      margin: 5px;
-      font-size: 14px;
-      font-weight: normal;
-      border: none;
-      width: 100px;
-      border-radius: 5px;
-      margin-right: 50px;
-  }
+/*popup*/
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 
-  #saveedit, #yes-btn, .yes-btn {
+}
+
+.popup button {
+    color: #fff;
+    margin: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    border: none;
+    width: 100px;
+    border-radius: 5px;
+    margin-right: 50px;
+}
+
+#saveedit, #yes-btn, .yes-btn {
     background-color: #FFD13F;
 }
 #saveedit:hover, .yes-btn:hover, #yes-btn:hover{

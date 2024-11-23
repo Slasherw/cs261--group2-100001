@@ -20,7 +20,7 @@ const numberID = sessionStorage.getItem('username');
                     <tr>
                         <th>ID</th>
                         <th>ชื่อ</th>
-                        <th>วันที่</th>
+                        <th>วันที่ยื่น</th>
                         
                         <th>เหตุผลที่ยื่นคำร้อง</th>
                         <th>อีเมลล์</th>
@@ -28,7 +28,7 @@ const numberID = sessionStorage.getItem('username');
                         <th>สถานะ</th>
                         <th>Action</th>
                         <th>Action</th>
-                        
+                        <th>ActionDate</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">
@@ -46,6 +46,20 @@ const numberID = sessionStorage.getItem('username');
         if (form.status === "ปฏิเสธคำร้อง") {
             statusColor = "style='color: red;'"; // กำหนดสีเขียวถ้าสถานะเป็น "อนุมัติคำร้อง"
         }
+        const actionButtons = (form.status !== "อนุมัติคำร้อง" && form.status !== "ปฏิเสธคำร้อง")
+        ? `
+            <td>
+                <button class="btn btn-danger" onclick="deleteFormPopup(${form.id})">ยกเลิกคำร้อง</button>
+            </td>
+            <td>
+                <button class="btn btn-warning ml-2" onclick="editForm(${form.id})">แก้ไขคำร้อง</button>
+            </td>
+        `
+        : `
+            <td></td>
+            <td></td>
+        `;
+        
             tableBody.innerHTML += `
                 <tr>
                     <td>${form.id}</td>
@@ -56,14 +70,8 @@ const numberID = sessionStorage.getItem('username');
                     <td>${form.email}</td>
                     <td>${form.requestType}</td>
                     <td id="status-${form.id}" ${statusColor}>${form.status}</td>
-                    <td>
-                        <!-- ปุ่มลบสำหรับแต่ละแถว -->
-                        <button class="btn btn-danger" onclick="deleteFormPopup(${form.id})">ยกเลิกคำร้อง</button>
-                        
-                    </td>
-                    <td>
-                        <button class="btn btn-warning ml-2" onclick="editForm(${form.id})">แก้ไขคำร้อง</button>
-                    </td>
+                ${actionButtons}
+                <td>${form.actiondate}</td>
                 </tr>
             `;
         });
@@ -132,3 +140,10 @@ const numberID = sessionStorage.getItem('username');
 const displayname_th = sessionStorage.getItem('displaynameth');
 const nameFromSession = sessionStorage.getItem('displaynameth');
 document.getElementById('menuname').innerHTML = `${displayname_th} <a class="fa fa-user-circle" style="color: black;"></a>`;
+
+document.getElementById('logout-button').addEventListener('click', function() {
+    // ลบข้อมูลทั้งหมดใน sessionStorage
+    sessionStorage.clear();
+  
+    window.location.href = '../index.html'; 
+});

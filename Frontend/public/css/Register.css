@@ -25,8 +25,7 @@
 
  /* กำหนดสไตล์ให้กับรูปโลโก้ใน header */
  .header-info img{
-   width: 100px;
-   margin-right: 10px;
+   width: 500px;
  }
 
  /* สไตล์สำหรับ container ของ header */
@@ -106,7 +105,7 @@
  input[type="text"]::placeholder , input[type="password"]::placeholder{
   color: #999; 
   font-size: 14px;
-  padding-left: 10px; 
+  /*padding-left: 10px;*/ /*เอาออกเพราะเวลากดพิมพ์ข้อความมันไม่ตรงกับตัว placeholder*/
  }
 
  /* container สำหรับช่องกรอกรหัสผ่าน */

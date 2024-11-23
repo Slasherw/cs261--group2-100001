@@ -29,6 +29,11 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+  .container h1{ /*if use boostrap*/
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+  }
   .flex-container {
     display: flex;
     align-items: stretch; /* ให้ทั้งสองขยายความสูงเท่ากัน */
@@ -36,7 +41,7 @@
   .menubar {
     background-color: #C3002F;
     width: 200px;
-    
+    min-height: 100vh;
     padding-top: 20px;
     align-items: center;
   }
@@ -80,15 +85,20 @@
       font-size: 1.5em;
       font-weight: bold;
       color: #C3002F;
+
+      /*      use boostrap*/
+      padding-bottom: 15px;
   }
   
   .header img {
-      height: 50px;
       margin-right: 10px;
-      width: 50%;
       height: auto;
       padding-top: 20px;
       padding-left: 30px;
+
+    /*      width: 50%;*/
+/*      use boostrap*/
+      width: 53.5%;
   }
   #icon{
       text-align: right;
@@ -104,7 +114,10 @@
       padding-right: 8px;
       padding-left: 8px;
   }
-  
+  #menuname{ /*if use boostrap*/
+    padding-top: 25px;
+    padding-bottom: 10px;
+  }
   
   
   /*buttonss*/
@@ -169,7 +182,7 @@
   }
 
   
-  #saveedit, #yes-btn, .yes-btn {
+#saveedit, #yes-btn, .yes-btn {
     background-color: #FFD13F;
 }
 #saveedit:hover, .yes-btn:hover, #yes-btn:hover{

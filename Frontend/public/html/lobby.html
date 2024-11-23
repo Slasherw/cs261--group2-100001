@@ -22,7 +22,7 @@
             <img src="../img/tu_logo.png" alt="TU_logo">
         </div>
         
-        <div class="user-info" >
+        <div class="user-info">
             <p id="menuname">User Name
                 <a class="fa fa-user-circle"></a>
             </p>
@@ -37,7 +37,7 @@
 
 
 
-    <div id="divfornothead">
+    <div id="divfornothead" class="flex-container">
 
         <div id="menubar" class="menubar">
             <button><a href="../html/lobby.html">หน้าหลัก</a></button>
@@ -45,10 +45,14 @@
             <button><a href="../html/history.html">ประวัติการยื่นคำร้อง</a></button>
             <button><a href="#">แบบร่าง</a></button>
             <button><a href="#">สถานะคำร้อง</a></button> 
+            <button id="logout-button" class="btn btn-primary">ออกจากระบบ</button>
         </div>
 
         <div class="container">
             <h1 id="welcomeMessage">Welcome User to Lobby</h1>
+            <a class="fa fa-calendar" href="#"> ระยะเวลาในการยื่นคำร้องเพิ่ม-ถอนรายวิชา</a>
+            </p>
+            <a href="../html/request.html"> ต้องการเขียนคำร้อง</a>
             <h2>User Info:</h2>
             <div id="userDetails" class="user-info-container"></div>
         </div>
@@ -58,7 +62,6 @@
     </div>
 
     <!--<script src="/Frontend/public/js/script.js"></script> -->
-    
     <!-- <script src="../js/request_script.js"></script> -->
     <script src="../js/lobby_script.js"></script>
 
