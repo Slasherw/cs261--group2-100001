@@ -1,4 +1,4 @@
-package com.example.crud;
+package turequest.backend.profile;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 
 @RestController
-@RequestMapping("/add-user")
+@RequestMapping("/profile")
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserProfileController {
 
@@ -18,7 +18,7 @@ public class UserProfileController {
         this.userProfileService = userProfileService;
     }
 
-    @PostMapping
+    @PostMapping("/adduser")
     public ResponseEntity<?> createUserProfile(@RequestBody UserProfile userProfile) {
         if (userProfileService.getUserProfileByName(userProfile.getUsername()).isEmpty()) {
             userProfileService.createUserProfile(userProfile);

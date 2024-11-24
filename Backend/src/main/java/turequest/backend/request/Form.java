@@ -1,5 +1,4 @@
-package com.example.crud;
-import javax.persistence.*;
+package turequest.backend.request;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,74 +12,80 @@ public class Form {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "date")
+    @Column(name = "stage", length = 20)
+    private String stage;
+
+    @Column(name = "date", length = 20)
     private String date; // วันที่
 
-    @Column(name = "prefix")
+    @Column(name = "prefix", length = 10)
     private String prefix; // คำนำหน้า
 
-    @Column(name = "full_name")
+    @Column(name = "full_name", length = 50)
     private String fullName; // ชื่อ-สกุล
 
-    @Column(name = "student_id")
+    @Column(name = "student_id", length = 10)
     private String studentId; // เลขทะเบียน
 
     @Column(name = "year")
     private Integer year; // ชั้นปี (สามารถเป็น null ได้)
 
-    @Column(name = "department")
+    @Column(name = "department", length = 40)
     private String department; // สาขาวิชา
 
-    @Column(name = "email")
+    @Column(name = "email", length = 50)
     private String email; // อีเมลล์
 
-    @Column(name = "address")
+    @Column(name = "address", length = 30)
     private String address; // เลขที่
 
-    @Column(name = "subdistrict")
+    @Column(name = "subdistrict", length = 40)
     private String subdistrict; // แขวง/ตำบล
 
-    @Column(name = "district")
+    @Column(name = "district", length = 40)
     private String district; // เขต/อำเภอ
 
-    @Column(name = "province")
+    @Column(name = "province", length = 40)
     private String province; // จังหวัด
 
-    @Column(name = "student_phone")
+    @Column(name = "student_phone", length = 10)
     private String studentPhone; // โทรศัพท์นักศึกษา
 
-    @Column(name = "parent_phone")
+    @Column(name = "parent_phone", length = 10)
     private String parentPhone; // โทรศัพท์ผู้ปกครอง
 
-    @Column(name = "advisor")
+    @Column(name = "advisor", length = 50)
     private String advisor; // อาจารย์ที่ปรกครอง
 
-    @Column(name = "request_type")
+    @Column(name = "request_type", length = 50)
     private String requestType; // ประเภทคำร้อง
 
-    @Column(name = "semester")
+    @Column(name = "semester", length = 10)
     private String semester; // ภาคเรียน
 
-    @Column(name = "academic_year")
+    @Column(name = "academic_year", length = 15)
     private String academicYear; // ปีการศึกษา
 
-    @Column(name = "course_code")
+    @Column(name = "course_code", length = 20)
     private String courseCode; // รหัสวิชา
 
-    @Column(name = "course_name")
+    @Column(name = "course_name", length = 30)
     private String courseName; // ชื่อวิชา
 
-    @Column(name = "section")
+    @Column(name = "section", length = 10)
     private String section; // Section
 
-    @Column(name = "reason")
+    @Column(name = "reason", length = 100)
     private String reason; // เหตุผลในการยื่นคำร้อง
 
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", nullable = false, length = 25)
     private String status;
 
-    @Column(name = "Actiondate")
+    @Column(name = "Actiondate", length = 20)
     private String Actiondate;
+
+    @Column(name = "attachFiles")
+    private Long[] attachFiles;
 
     public String getActiondate() {
         return Actiondate;
@@ -273,5 +278,21 @@ public class Form {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public void setAttachFiles(Long[] fileIds) {
+        this.attachFiles = fileIds;
+    }
+
+    public Long[] getAttachFiles() {
+        return this.attachFiles;
+    }
+
+    public String getStage() {
+        return stage;
+    }
+
+    public void setStage(String stage) {
+        this.stage = stage;
     }
 }
