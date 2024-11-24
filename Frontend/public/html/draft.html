@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draft Requests</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/draft.css">
+</head>
+
+<body class="edit-form">
+    <div class="header">
+        <div class="tulogo">
+            <img src="../img/tu_logo.png" alt="TU Logo">
+        </div>
+        <div class="user-info">
+            <p id="menuname">User Name <i class="fa fa-user-circle"></i></p>
+            <p id="icon">
+                <i class="fa fa-bars"></i>
+                <i class="fa fa-comment"></i>
+                <i class="fa fa-bell"></i>
+            </p>
+        </div>
+    </div>
+
+    <div id="divfornothead" class="flex-container">
+        <div id="menubar" class="menubar">
+            <button><a href="../html/lobby.html">หน้าหลัก</a></button>
+            <button><a href="../html/request.html">เขียนคำร้อง</a></button>
+            <button><a href="../html/history.html">ประวัติการยื่นคำร้อง</a></button>
+            <button><a href="../html/draft.html">แบบร่าง</a></button>
+            <button><a href="#">สถานะคำร้อง</a></button>
+        </div>
+
+        <div class="container">
+            <h1>แบบร่างคำร้อง</h1>
+            <div id="draft-details"></div>
+        </div>
+    </div>
+
+    <div class="popup" id="decline-popup">
+        <p>คุณแน่ใจหรือไม่ที่จะต้องการยกเลิกคำร้อง</p>
+        <button class="yes-btn" id="confirm">แน่ใจ</button>
+        <button class="no-btn" id="decline">ไว้ทีหลัง</button>
+    </div>
+
+    <div class="popup" id="decline-popup-success">
+        <p>ยกเลิกคำร้องเรียบร้อยแล้ว</p>
+        <button class="yes-btn" id="confirm2">ปิดหน้าต่าง</button>
+    </div>
+
+
+    <script src="../js/draft_script.js"></script>
+</body>
+
+</html>
