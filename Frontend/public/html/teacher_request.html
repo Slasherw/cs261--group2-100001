@@ -38,14 +38,11 @@
 
         <div id="menubar" class="menubar">
             <!--<button><a href="../html/lobby.html">หน้าหลัก</a></button>-->
-            <button onclick="window.location.href='../html/lobby.html'">หน้าหลัก</button>
-            <button onclick="window.location.href='../html/allrequest.html'">คำร้องใหม่</button>
-            <button onclick="window.location.href='#'">อนุมัติแล้ว</button>
-            <button onclick="window.location.href='#'">ไม่อนุมัติ</button>
+            <button onclick="window.location.href='../html/teacher_request.html'">คำร้องนักเรียน</button>
             <button id="logout-button" class="btn btn-primary">ออกจากระบบ</button>
             
-            <!--<button><a href="#">แบบร่าง</a></button>
-            <button><a href="#">สถานะคำร้อง</a></button> -->
+            
+            <!-- <button><a href="#">สถานะคำร้อง</a></button>  -->
         </div>
 
         <div class="container">
@@ -58,7 +55,7 @@
                 <button type="button" id="edit-btn">แก้ไข</button>
                 <button type="button" id="cancel-btn">ยกเลิก</button>
             </div> -->
-            <h1 id="" style="text-align: center;">แบบฟอร์มคำร้องของนักเรียนทั้งหมด</h1>
+            <h1 id="" style="text-align: center;">แบบฟอร์มคำร้องของนักเรียนทั้งหมด(อาจารย์)</h1>
             <div id="request-details"></div>
         </div>
 
@@ -74,13 +71,14 @@
         <button class="yes-btn" onclick="location.reload();">ตกลง</button>
     </div>
 
+
     <div id="logoutpopup" class="popup">
         <p>ต้องการออกจากระบบ ?</p>
         <button id="logout" class="yes-btn">ใช่</button>
         <button id="nologout" class="no-btn">ไม่</button>
     </div>
 
-    <script src="../js/allrequest.js"></script>
+    <script src="../js/teacher_request.js"></script>
 </body>
 
 </html>

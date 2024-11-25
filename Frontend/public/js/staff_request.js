@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchAllRequests() {
-    fetch("http://localhost:8080/submit-request/all-requests")
+    fetch("http://localhost:8080/submit-request/requests-by-stage/2")
         .then(response => response.json())
         .then(data => {
             displayRequests(data);
@@ -20,7 +20,6 @@ function displayRequests(requests) {
     let tableHTML = `<table class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th>ID</th>
                 <th>เลขทะเบียน</th>
                 <th>ชื่อ</th>
                 <th>วันที่ยื่น</th>
@@ -30,6 +29,7 @@ function displayRequests(requests) {
                 <th>Action</th>
                 <th>Action</th>
                 <th>วันที่ที่ตอบรับ</th>
+                <th>ข้อมูล</th>
             </tr>
         </thead>
         <tbody>`;
@@ -45,7 +45,6 @@ function displayRequests(requests) {
         }
         tableHTML += `
             <tr>
-                <td>${request.id}</td>
                 <td>${request.studentId}</td>
                 <td>${request.fullName}</td>
                 <td>${request.date}</td>
@@ -62,6 +61,9 @@ function displayRequests(requests) {
                 <td>
                 <input type="date" id="date-${request.id}"  class="form-control">
                 </td>
+                <td>
+                <button class="btn btn-outline-dark" onclick="goToDetailRequest(${request.id})">detail</button>
+                </td>
             </tr>`;
     });
 
@@ -75,7 +77,7 @@ function admitRequest(id) {
         alert("กรุณาเลือกวันที่ก่อนที่จะอนุมัติคำร้อง");
         return;
     }
-    fetch(`http://localhost:8080/submit-request/admit/${id}?date=${selectedDate}`, {
+    fetch(`http://localhost:8080/submit-request/admitstaff/${id}?date=${selectedDate}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -122,9 +124,15 @@ function admitRequest(id) {
         console.error("Error denying request:", error);
     });
 }
+function goToDetailRequest(requestId) {
+    // สร้าง URL ใหม่เพื่อส่ง requestId ไปยังหน้า detailrequest.html
+    const url = `detailrequest.html?id=${requestId}`;
+    window.location.href = url; // เปลี่ยนเส้นทางไปยัง URL ที่ต้องการ
+}
 const displayname_th = sessionStorage.getItem('displaynameth');
 const nameFromSession = sessionStorage.getItem('displaynameth');
 document.getElementById('menuname').innerHTML = `${displayname_th} <a class="fa fa-user-circle" style="color: black;"></a>`;
+
 
 document.getElementById('logout-button').addEventListener('click', function() {
 

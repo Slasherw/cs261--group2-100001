@@ -178,10 +178,15 @@ document.getElementById('yes-btn').addEventListener('click', function() {
     });
 const nameth = sessionStorage.getItem('displaynameth');
 document.getElementById('fullname').value = nameth;
+document.getElementById('fullname').disabled = true;
+
 const numberID = sessionStorage.getItem('username');
 document.getElementById('number').value = numberID;
+document.getElementById('number').disabled = true;
 const email = sessionStorage.getItem('email');
 document.getElementById('email').value = email;
+document.getElementById('email').disabled = true;
+
 document.getElementById('menuname').value = nameth;
 const nameFromSession = sessionStorage.getItem('displaynameth');
 if (nameFromSession) {
@@ -270,6 +275,25 @@ document.getElementById('send-btn').addEventListener('click', function() {
         console.error('Error:', error);
         alert('เกิดข้อผิดพลาดในการส่งคำร้องแบบรับการตอบกลับฝั่ง server');
     });
+});
+
+document.getElementById('logout-button').addEventListener('click', function() {
+
+    document.getElementById('logoutpopup').style.display = 'block';
+
+});
+
+document.getElementById('nologout').addEventListener('click', function() {
+
+    document.getElementById('logoutpopup').style.display = 'none';
+
+});
+
+document.getElementById('logout').addEventListener('click', function() {
+    // ลบข้อมูลทั้งหมดใน sessionStorage
+    sessionStorage.clear();
+  
+    window.location.href = '../index.html'; 
 });
 
 
