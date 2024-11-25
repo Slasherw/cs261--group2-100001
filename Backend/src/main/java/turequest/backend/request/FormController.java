@@ -23,10 +23,9 @@ public class FormController {
     @PostMapping
     public ResponseEntity<?> submitRequest(@RequestPart("data") Form form,
                                            @RequestPart("file") MultipartFile[] files) {
-      
-        if (form.getStatus() == null) {
+
             form.setStatus("ยังไม่ถูกดำเนินการ");
-        }
+
         if (form.getActiondate() == null) {
             form.setActiondate("-");
         }
@@ -97,8 +96,15 @@ public class FormController {
         form.setDepartment(updatedForm.getDepartment());
         form.setEmail(updatedForm.getEmail());
         form.setRequestType(updatedForm.getRequestType());
-        form.setStatus(updatedForm.getStatus() != null ? updatedForm.getStatus() : form.getStatus()); // ถ้าไม่มีค่า status ใหม่ ให้คงค่าเดิม
 
+        // เพิ่มเงื่อนไขสำหรับ stage เท่ากับ "10" แล้วอัปเดต status
+        if ("10".equals(form.getStage())) {
+            form.setStatus("ยังไม่ถูกดำเนินการ");
+            form.setStage("0");
+        } else {
+            // ถ้าไม่มีการเปลี่ยนแปลง status ใหม่ จะคงค่าเดิม
+            form.setStatus(updatedForm.getStatus() != null ? updatedForm.getStatus() : form.getStatus());
+        }
         // เพิ่มฟิลด์อื่นๆ ตามที่คุณต้องการ
         form.setAddress(updatedForm.getAddress());
         form.setSubdistrict(updatedForm.getSubdistrict());
@@ -203,5 +209,75 @@ public class FormController {
         formRepository.save(form);
 
         return ResponseEntity.ok(Collections.singletonMap("success", true));
+    }
+    @PostMapping("/savedraft")
+    public ResponseEntity<?> submitRequestdraft(@RequestPart("data") Form form,
+                                           @RequestPart("file") MultipartFile[] files) {
+
+        if (form.getStatus() == null) {
+            form.setStatus("แบบร่าง");
+        }
+        if (form.getActiondate() == null) {
+            form.setActiondate("-");
+        }
+
+        if (form.getStage() == null) {
+            form.setStage("10");
+        }
+        if (files.length > 5) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.singletonMap("message", "File limits up to 5 files"));
+
+        Long[] uploaded = {};
+        if (files.length != 0) uploaded = fileServerService.upload(files);
+        form.setAttachFiles(uploaded);
+
+        // Save the form data to the database
+        formRepository.save(form);
+
+        //return ResponseEntity.ok("Request submitted successfully");
+        return ResponseEntity.ok(Collections.singletonMap("success", true));
+    }
+    @PutMapping(value = "/update1/{id}", consumes = {"application/json", "text/plain"})
+    public ResponseEntity<?> updateRequest1(@PathVariable Long id, @RequestBody Form updatedForm) {
+        // ตรวจสอบว่า form ที่มี id นี้มีอยู่หรือไม่
+        if (!formRepository.existsById(id)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "Form not found"));
+        }
+
+        // ดึงข้อมูลคำร้องเก่ามาและอัพเดตค่าใหม่ที่ส่งมา
+        Form form = formRepository.findById(id).get();
+        form.setFullName(updatedForm.getFullName());
+        form.setDate(updatedForm.getDate());
+        form.setYear(updatedForm.getYear());
+        form.setDepartment(updatedForm.getDepartment());
+        form.setEmail(updatedForm.getEmail());
+        form.setRequestType(updatedForm.getRequestType());
+
+        // เพิ่มเงื่อนไขสำหรับ stage เท่ากับ "10" แล้วอัปเดต status
+        if ("10".equals(form.getStage())) {
+            form.setStatus("แบบร่าง");
+            form.setStage("10");
+        } else {
+            // ถ้าไม่มีการเปลี่ยนแปลง status ใหม่ จะคงค่าเดิม
+            form.setStatus(updatedForm.getStatus() != null ? updatedForm.getStatus() : form.getStatus());
+        }
+        // เพิ่มฟิลด์อื่นๆ ตามที่คุณต้องการ
+        form.setAddress(updatedForm.getAddress());
+        form.setSubdistrict(updatedForm.getSubdistrict());
+        form.setDistrict(updatedForm.getDistrict());
+        form.setProvince(updatedForm.getProvince());
+        form.setStudentPhone(updatedForm.getStudentPhone());
+        form.setParentPhone(updatedForm.getParentPhone());
+        form.setAdvisor(updatedForm.getAdvisor());
+        form.setPrefix(updatedForm.getPrefix());
+        form.setSemester(updatedForm.getSemester());
+        form.setAcademicYear(updatedForm.getAcademicYear());
+        form.setCourseCode(updatedForm.getCourseCode());
+        form.setCourseName(updatedForm.getCourseName());
+        form.setSection(updatedForm.getSection());
+        form.setReason(updatedForm.getReason());
+        formRepository.save(form);
+
+        return ResponseEntity.ok(Collections.singletonMap("success", true));
+
     }
 }
