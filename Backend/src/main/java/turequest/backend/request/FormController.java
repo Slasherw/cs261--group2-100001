@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 import turequest.backend.filestorage.FileServerRepository;
 import turequest.backend.filestorage.FileServerService;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -24,12 +23,14 @@ public class FormController {
     @PostMapping
     public ResponseEntity<?> submitRequest(@RequestPart("data") Form form,
                                            @RequestPart("file") MultipartFile[] files) {
+      
         if (form.getStatus() == null) {
             form.setStatus("ยังไม่ถูกดำเนินการ");
         }
         if (form.getActiondate() == null) {
             form.setActiondate("-");
         }
+
         if (form.getStage() == null) {
             form.setStage("0");
         }
@@ -54,12 +55,14 @@ public class FormController {
         }
         return ResponseEntity.ok(forms);
     }
+
     @GetMapping("/requests-by-stage/{stage}")
     public ResponseEntity<List<Form>> getRequestsByStage(@PathVariable String stage) {
         // ค้นหา form ทั้งหมดที่มี stage ตรงกับค่า stage ที่ส่งมา
         List<Form> forms = formRepository.findByStage(stage);
         return ResponseEntity.ok(forms);
     }
+
     @GetMapping(value = "/info/{requestId}", produces = "application/json;charset=UTF-8")
     public ResponseEntity<?> getFormById(@PathVariable Long requestId) {
         Optional<Form> forms = formRepository.findById(requestId);
@@ -78,6 +81,7 @@ public class FormController {
         formRepository.deleteById(id); // Delete the form from the database
         return ResponseEntity.ok(Collections.singletonMap("message", "Form deleted successfully"));
     }
+
     @PutMapping(value = "/update/{id}", consumes = {"application/json", "text/plain"})
     public ResponseEntity<?> updateRequest(@PathVariable Long id, @RequestBody Form updatedForm) {
         // ตรวจสอบว่า form ที่มี id นี้มีอยู่หรือไม่

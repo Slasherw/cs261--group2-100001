@@ -1,20 +1,13 @@
-package turequest.backend.request;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+package turequest.backend.requestdraft;
+
+import jakarta.persistence.*;
 @Entity
-@Table(name = "request")
-public class Form {
+@Table(name = "draft_request")
+public class DraftForm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "stage", length = 20)
-    private String stage;
-  
     @Column(name = "date", length = 20)
     private String date; // วันที่
 
@@ -83,9 +76,6 @@ public class Form {
 
     @Column(name = "Actiondate", length = 20)
     private String Actiondate;
-
-    @Column(name = "attachFiles")
-    private Long[] attachFiles;
 
     public String getActiondate() {
         return Actiondate;
@@ -279,21 +269,4 @@ public class Form {
     public void setReason(String reason) {
         this.reason = reason;
     }
-
-    public void setAttachFiles(Long[] fileIds) {
-        this.attachFiles = fileIds;
-    }
-
-    public Long[] getAttachFiles() {
-        return this.attachFiles;
-    }
-
-    public String getStage() {
-        return stage;
-    }
-
-    public void setStage(String stage) {
-        this.stage = stage;
-    }
-
 }
