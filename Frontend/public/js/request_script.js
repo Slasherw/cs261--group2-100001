@@ -256,10 +256,13 @@ document.getElementById('send-btn').addEventListener('click', function() {
             formData_2.append("file", files[i]);
         }
     }
-
+    const headers = requestId
+    ? { 'Content-Type': 'application/json' } // สำหรับการอัปเดต
+    : undefined; // ไม่ต้องใส่ headers สำหรับ POST แบบ multipart/form-data
     // Send the data to the server
     fetch(url, {
         method: method,
+        headers: headers,
         body: requestId ? JSON.stringify(formData) : formData_2
     })
     .then(response => response.json())
