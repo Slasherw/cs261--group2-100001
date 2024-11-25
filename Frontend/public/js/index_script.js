@@ -12,10 +12,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
 function submitLogin(){
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-
+    if (username === "advisor" && password === "advisor") {
+        // ถ้า username และ password เป็น "advisor"
+        window.location.href = 'html/Advisor_request.html';
+    }
+    if (username === "staff" && password === "staff") {
+        window.location.href = 'html/staff_request.html';
+    }
+    if (username === "dean" && password === "dean") {
+        window.location.href = 'html/dean_request.html';
+    }
+    if (username === "teacher" && password === "teacher") {
+        window.location.href = 'html/teacher_request.html';
+    }
     if (!validateUsername() || !validatePassword()) {
         return;
     }
+
 
     url = 'https://restapi.tu.ac.th/api/v1/auth/Ad/verify';
 

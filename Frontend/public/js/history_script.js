@@ -18,7 +18,6 @@ const numberID = sessionStorage.getItem('username');
             <table class="table table-striped table-bordered mt-4">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID</th>
                         <th>ชื่อ</th>
                         <th>วันที่ยื่น</th>
                         
@@ -29,6 +28,7 @@ const numberID = sessionStorage.getItem('username');
                         <th>Action</th>
                         <th>Action</th>
                         <th>ActionDate</th>
+                        <th>ข้อมูล</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">
@@ -46,7 +46,7 @@ const numberID = sessionStorage.getItem('username');
         if (form.status === "ปฏิเสธคำร้อง") {
             statusColor = "style='color: red;'"; // กำหนดสีเขียวถ้าสถานะเป็น "อนุมัติคำร้อง"
         }
-        const actionButtons = (form.status !== "อนุมัติคำร้อง" && form.status !== "ปฏิเสธคำร้อง")
+        const actionButtons = (form.status == "ยังไม่ถูกดำเนินการ")
         ? `
             <td>
                 <button class="btn btn-danger" onclick="deleteFormPopup(${form.id})">ยกเลิกคำร้อง</button>
@@ -62,7 +62,6 @@ const numberID = sessionStorage.getItem('username');
         
             tableBody.innerHTML += `
                 <tr>
-                    <td>${form.id}</td>
                     <td>${form.fullName}</td>
                     <td>${form.date}</td>
                     
@@ -72,6 +71,9 @@ const numberID = sessionStorage.getItem('username');
                     <td id="status-${form.id}" ${statusColor}>${form.status}</td>
                 ${actionButtons}
                 <td>${form.actiondate}</td>
+                <td>
+                <button class="btn btn-outline-dark" onclick="goToDetailRequest(${form.id})">detail</button>
+                </td>
                 </tr>
             `;
         });
@@ -136,6 +138,11 @@ const numberID = sessionStorage.getItem('username');
     function editForm(id) {
         // เปลี่ยนหน้าที่ไปยัง request.html พร้อมพารามิเตอร์ id
         window.location.href = `request.html?id=${id}`;
+    }
+    function goToDetailRequest(requestId) {
+        // สร้าง URL ใหม่เพื่อส่ง requestId ไปยังหน้า detailrequest.html
+        const url = `detailrequest.html?id=${requestId}`;
+        window.location.href = url; // เปลี่ยนเส้นทางไปยัง URL ที่ต้องการ
     }
 const displayname_th = sessionStorage.getItem('displaynameth');
 const nameFromSession = sessionStorage.getItem('displaynameth');

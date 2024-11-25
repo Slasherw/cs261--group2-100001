@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchAllRequests() {
-    fetch("http://localhost:8080/submit-request/all-requests")
+    fetch("http://localhost:8080/submit-request/requests-by-stage/0")
         .then(response => response.json())
         .then(data => {
             displayRequests(data);
@@ -20,7 +20,6 @@ function displayRequests(requests) {
     let tableHTML = `<table class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th>ID</th>
                 <th>เลขทะเบียน</th>
                 <th>ชื่อ</th>
                 <th>วันที่ยื่น</th>
@@ -46,7 +45,6 @@ function displayRequests(requests) {
         }
         tableHTML += `
             <tr>
-                <td>${request.id}</td>
                 <td>${request.studentId}</td>
                 <td>${request.fullName}</td>
                 <td>${request.date}</td>

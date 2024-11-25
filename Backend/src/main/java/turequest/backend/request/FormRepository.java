@@ -6,4 +6,5 @@ import java.util.List;
 public interface FormRepository extends JpaRepository<Form, Long> {
     // You can add custom query methods if needed
     List<Form> findByStudentId(String studentId);
+    List<Form> findByStage(String stage);
 }

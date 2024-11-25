@@ -246,14 +246,24 @@ document.getElementById('realsavedraft-btn').addEventListener('click', function(
         : `http://localhost:8080/draft-request`; // POST endpoint for new data
 
     const method = requestId ? 'PUT' : 'POST'; // Use PUT for update, POST for new entry
+    const formData_2 = new FormData();
 
+    formData_2.append("data", new Blob([JSON.stringify(formData)], { type: "application/json" }));
+    const fileInput = document.querySelector('#attach_files');
+    const files = fileInput ? fileInput.files : null;
+    if (files && files.length > 0) {
+        for (let i = 0; i < files.length; i++) {
+            formData_2.append("file", files[i]);
+        }
+    }
+    const headers = requestId
+    ? { 'Content-Type': 'application/json' } // สำหรับการอัปเดต
+    : undefined; // ไม่ต้องใส่ headers สำหรับ POST แบบ multipart/form-data
     // Send the data to the server
     fetch(url, {
         method: method,
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        headers: headers,
+        body: requestId ? JSON.stringify(formData) : formData_2
     })
     .then(response => response.json())
     .then(data => {
@@ -304,20 +314,36 @@ document.getElementById('send-btn').addEventListener('click', function() {
 
         
     };
-    const url = `http://localhost:8080/submit-request`; // POST endpoint for new data
 
-    const method = 'POST'; // Use PUT for update, POST for new entry
+    const requestId = new URLSearchParams(window.location.search).get('id'); // assuming id is passed as a query param
 
+    const url = requestId 
+        ? `http://localhost:8080/submit-request/update/${requestId}` // PUT or PATCH API endpoint for update
+        : `http://localhost:8080/submit-request`; // POST endpoint for new data
+
+    const method = requestId ? 'PUT' : 'POST'; // Use PUT for update, POST for new entry
+    const formData_2 = new FormData();
+
+    formData_2.append("data", new Blob([JSON.stringify(formData)], { type: "application/json" }));
+    const fileInput = document.querySelector('#attach_files');
+    const files = fileInput ? fileInput.files : null;
+    if (files && files.length > 0) {
+        for (let i = 0; i < files.length; i++) {
+            formData_2.append("file", files[i]);
+        }
+    }
+    const headers = requestId
+    ? { 'Content-Type': 'application/json' } // สำหรับการอัปเดต
+    : undefined; // ไม่ต้องใส่ headers สำหรับ POST แบบ multipart/form-data
     // Send the data to the server
     fetch(url, {
         method: method,
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        headers: headers,
+        body: requestId ? JSON.stringify(formData) : formData_2
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if (data.success) {
             document.getElementById('cancel-work-btn').click();
             document.getElementById('popupsent-text').innerText = requestId ? 'คำร้องถูกอัพเดตเรียบร้อยแล้ว' : 'คำร้องถูกส่งเรียบร้อยแล้ว';
