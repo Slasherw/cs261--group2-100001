@@ -246,17 +246,28 @@ document.getElementById('send-btn').addEventListener('click', function() {
         : `http://localhost:8080/submit-request`; // POST endpoint for new data
 
     const method = requestId ? 'PUT' : 'POST'; // Use PUT for update, POST for new entry
+    const formData_2 = new FormData();
 
+    formData_2.append("data", new Blob([JSON.stringify(formData)], { type: "application/json" }));
+    const fileInput = document.querySelector('#attach_files');
+    const files = fileInput ? fileInput.files : null;
+    if (files && files.length > 0) {
+        for (let i = 0; i < files.length; i++) {
+            formData_2.append("file", files[i]);
+        }
+    }
+    const headers = requestId
+    ? { 'Content-Type': 'application/json' } // สำหรับการอัปเดต
+    : undefined; // ไม่ต้องใส่ headers สำหรับ POST แบบ multipart/form-data
     // Send the data to the server
     fetch(url, {
         method: method,
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        headers: headers,
+        body: requestId ? JSON.stringify(formData) : formData_2
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if (data.success) {
             document.getElementById('cancel-work-btn').click();
             document.getElementById('popupsent-text').innerText = requestId ? 'คำร้องถูกอัพเดตเรียบร้อยแล้ว' : 'คำร้องถูกส่งเรียบร้อยแล้ว';
@@ -271,6 +282,7 @@ document.getElementById('send-btn').addEventListener('click', function() {
         alert('เกิดข้อผิดพลาดในการส่งคำร้องแบบรับการตอบกลับฝั่ง server');
     });
 });
+
 
 
 window.onload = function() {
@@ -311,7 +323,7 @@ window.onload = function() {
 
 //drag and drop
 const dropArea = document.querySelector('.drop-area');
-const fileInput = document.getElementById('fileInput');
+const fileInput = document.getElementById('attach_files');
 
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
     dropArea.addEventListener(eventName, preventDefaults, false);
@@ -356,31 +368,7 @@ function handleFiles(files) {
     }
 
     ([...files]).forEach(file => {
-        uploadFile(file);
         previewFile(file);
-    });
-}
-
-function uploadFile(file) {
-    const url = 'http://localhost:8080/fileserver/upload';
-    const formData = new FormData();
-    formData.append('file', file);
-
-    fetch(url, {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('ไฟล์ถูกอัพโหลดเรียบร้อยแล้ว');
-        } else {
-            alert('เกิดข้อผิดพลาดในการอัพโหลดไฟล์');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('เกิดข้อผิดพลาดในการอัพโหลดไฟล์');
     });
 }
 
@@ -409,7 +397,10 @@ fileInput.addEventListener('change', (e) => {
 });
 
 //browse file
-document.getElementById('browse-btn').addEventListener('click', function() {
-    document.getElementById('fileInput').click();
+const browseButton = document.getElementById('browse-button');
+browseButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    fileInput.click();
 });
+
 
