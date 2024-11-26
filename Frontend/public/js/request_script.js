@@ -420,78 +420,14 @@ window.onload = function() {
 
 }
 
-//drag and drop
-const dropArea = document.querySelector('.drop-area');
-const fileInput = document.getElementById('fileInput');
-
-['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-    dropArea.addEventListener(eventName, preventDefaults, false);
-});
-
-function preventDefaults(e) {
-    e.preventDefault();
-    e.stopPropagation();
+const fileBtn = document.querySelector("#attach_files");
+const customTxt = document.querySelector("#custom-msg");
+fileBtn.addEventListener("change",function(){
+    if (fileBtn.value) {
+      customTxt.innerHTML = fileBtn.value.match(
+        /[\/\\]([\w\d\s\.\-\(\)]+)$/
+      )[1]
+    }else {
+      customTxt.innerHTML = "No file chosen, yet.";
 }
-
-['dragenter', 'dragover'].forEach(eventName => {
-    dropArea.addEventListener(eventName, () => {
-        dropArea.classList.add('active');
-    }, false);
 });
-
-['dragleave', 'drop'].forEach(eventName => {
-    dropArea.addEventListener(eventName, () => {
-        dropArea.classList.remove('active');
-    }, false);
-});
-
-dropArea.addEventListener('drop', handleDrop, false);
-
-function handleDrop(e) {
-    const dt = e.dataTransfer;
-    const files = dt.files;
-    const fileArray = [...files];
-    console.log(files);
-    console.log(fileArray.length);
-    // handleFiles(files);
-}
-
-function handleFiles(files) {
-    ([...files]).forEach(uploadFile);
-}
-
-function uploadFile(file) {
-    const url = 'http://localhost:8080/upload';
-    const formData = new FormData();
-    formData.append('file', file);
-
-    fetch(url, {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('ไฟล์ถูกอัพโหลดเรียบร้อยแล้ว');
-        } else {
-            alert('เกิดข้อผิดพลาดในการอัพโหลดไฟล์');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('เกิดข้อผิดพลาดในการอัพโหลดไฟล์');
-    });
-}
-
-fileInput.addEventListener('change', (e) => {
-    const files = e.target.files;
-    const fileArray = [...files];
-    console.log(files);
-    // handleFiles(files);
-});
-
-//browse file
-document.getElementById('browse-btn').addEventListener('click', function() {
-    document.getElementById('fileInput').click();
-});
-
