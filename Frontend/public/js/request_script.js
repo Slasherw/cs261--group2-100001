@@ -167,10 +167,15 @@ document.getElementById('yes-btn').addEventListener('click', function() {
     });
 const nameth = sessionStorage.getItem('displaynameth');
 document.getElementById('fullname').value = nameth;
+document.getElementById('fullname').disabled = true;
+
 const numberID = sessionStorage.getItem('username');
 document.getElementById('number').value = numberID;
+document.getElementById('number').disabled = true;
 const email = sessionStorage.getItem('email');
 document.getElementById('email').value = email;
+document.getElementById('email').disabled = true;
+
 document.getElementById('menuname').value = nameth;
 const nameFromSession = sessionStorage.getItem('displaynameth');
 if (nameFromSession) {
@@ -208,7 +213,7 @@ document.getElementById('notsavedraft-btn').addEventListener('click', function()
     document.getElementById('savedraftpopup').style.display = 'none';
 
 });
- /*
+/*
 document.getElementById('realsavedraft-btn').addEventListener('click', function() {
 
     const formData = {
@@ -359,6 +364,25 @@ document.getElementById('send-btn').addEventListener('click', function() {
     });
 });
 
+document.getElementById('logout-button').addEventListener('click', function() {
+
+    document.getElementById('logoutpopup').style.display = 'block';
+
+});
+
+document.getElementById('nologout').addEventListener('click', function() {
+
+    document.getElementById('logoutpopup').style.display = 'none';
+
+});
+
+document.getElementById('logout').addEventListener('click', function() {
+    // ลบข้อมูลทั้งหมดใน sessionStorage
+    sessionStorage.clear();
+  
+    window.location.href = '../index.html'; 
+});
+
 
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -396,81 +420,19 @@ window.onload = function() {
 
 }
 
-//drag and drop
-const dropArea = document.querySelector('.drop-area');
-const fileInput = document.getElementById('fileInput');
+const fileBtn = document.querySelector("#attach_files");
+const customTxt = document.querySelector("#custom-msg");
 
-['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-    dropArea.addEventListener(eventName, preventDefaults, false);
+fileBtn.addEventListener("change", function () {
+  if (fileBtn.files.length > 0) {
+    // Map through the FileList to get each file's name
+    const fileNames = Array.from(fileBtn.files).map(file => file.name);
+    // Join file names with a separator (e.g., comma)
+    customTxt.innerHTML = fileNames.join(" and  ");
+  } else {
+    customTxt.innerHTML = "No file chosen, yet.";
+  }
 });
-
-function preventDefaults(e) {
-    e.preventDefault();
-    e.stopPropagation();
-}
-
-['dragenter', 'dragover'].forEach(eventName => {
-    dropArea.addEventListener(eventName, () => {
-        dropArea.classList.add('active');
-    }, false);
-});
-
-['dragleave', 'drop'].forEach(eventName => {
-    dropArea.addEventListener(eventName, () => {
-        dropArea.classList.remove('active');
-    }, false);
-});
-
-dropArea.addEventListener('drop', handleDrop, false);
-
-function handleDrop(e) {
-    const dt = e.dataTransfer;
-    const files = dt.files;
-    const fileArray = [...files];
-    console.log(files);
-    console.log(fileArray.length);
-    // handleFiles(files);
-}
-
-function handleFiles(files) {
-    ([...files]).forEach(uploadFile);
-}
-
-function uploadFile(file) {
-    const url = 'http://localhost:8080/upload';
-    const formData = new FormData();
-    formData.append('file', file);
-
-    fetch(url, {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('ไฟล์ถูกอัพโหลดเรียบร้อยแล้ว');
-        } else {
-            alert('เกิดข้อผิดพลาดในการอัพโหลดไฟล์');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('เกิดข้อผิดพลาดในการอัพโหลดไฟล์');
-    });
-}
-
-fileInput.addEventListener('change', (e) => {
-    const files = e.target.files;
-    const fileArray = [...files];
-    console.log(files);
-    // handleFiles(files);
-});
-
-//browse file
-document.getElementById('browse-btn').addEventListener('click', function() {
-    document.getElementById('fileInput').click();
-});
-
 document.getElementById('realsavedraft-btn').addEventListener('click', function() {
     // Get the form data
 
@@ -544,4 +506,28 @@ document.getElementById('realsavedraft-btn').addEventListener('click', function(
         console.error('Error:', error);
         alert('เกิดข้อผิดพลาดในการส่งคำร้องแบบรับการตอบกลับฝั่ง server');
     });
+});
+// Function to check for URL parameters
+function getURLParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+  
+  // Check if "id" parameter exists in the URL
+  const id = getURLParameter("id");
+  if (id) {
+    // Hide elements if "id" parameter is present
+    document.querySelector(".document").style.display = "none";
+    document.querySelector("#browse-file").style.display = "none";
+    document.querySelector("#custom-msg").style.display = "none";
+    document.querySelector("#attach_files").style.display = "none";
+  }
+  // Get the button and the popup element
+const saveDraftBtn = document.getElementById("realsavedraft-btn");
+const saveDraftPopup = document.getElementById("savedraftpopup");
+
+// Add an event listener to the button
+saveDraftBtn.addEventListener("click", function () {
+  // Hide the popup
+  saveDraftPopup.style.display = "none";
 });

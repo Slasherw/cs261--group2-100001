@@ -40,11 +40,11 @@
     <div id="divfornothead" class="flex-container">
 
         <div id="menubar" class="menubar">
-            <button onclick= "window.location.href='../html/lobby.html'">หน้าหลัก</a></button>
-            <button onclick= "window.location.href='../html/request.html'">เขียนคำร้อง</a></button>
-            <button onclick= "window.location.href='../html/history.html'">ประวัติการยื่นคำร้อง</a></button>
-            <button onclick= "window.location.href='../html/draft.html'">แบบร่าง</a></button>
-            <button onclick= "window.location.href='#'">สถานะคำร้อง</a></button>
+            <button onclick= "window.location.href='../html/lobby.html'">หน้าหลัก</button>
+            <button onclick= "window.location.href='../html/request.html'">เขียนคำร้อง</button>
+            <button onclick= "window.location.href='../html/history.html'">ประวัติการยื่นคำร้อง</button>
+            <button onclick= "window.location.href='../html/draft.html'">แบบร่าง</button>
+            <button onclick= "window.location.href='#'">สถานะคำร้อง</button>
             <button id="logout-button" class="btn btn-primary">ออกจากระบบ</button>
         </div>
 
@@ -58,7 +58,7 @@
                 <button type="button" id="edit-btn">แก้ไข</button>
                 <button type="button" id="cancel-btn">ยกเลิก</button>
             </div> -->
-            <h1 id="">แบบฟอร์มคำร้องที่ยื่นไป</h1>
+            <h1 id="">ประวัติการยื่นคำร้อง</h1>
             <div id="request-details"></div>
         </div>
 
@@ -74,6 +74,12 @@
         <p>ยกเลิกคำร้องเรียบร้อยแล้ว</p>
         <button class="yes-btn" id="confirm2">ปิดหน้าต่าง</button>
     </div>
+
+    <div id="logoutpopup" class="popup">
+         <p>ต้องการออกจากระบบ ?</p>
+        <button id="logout" class="yes-btn">ใช่</button>
+        <button id="nologout" class="no-btn">ไม่</button>
+     </div>
 
     <script src="../js/history_script.js"></script>
 </body>

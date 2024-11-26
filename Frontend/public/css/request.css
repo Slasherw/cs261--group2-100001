@@ -24,7 +24,7 @@
     width: 1000px; 
     height: auto; /* ให้ความสูงปรับตามเนื้อหาภายใน */
     margin: 0 auto; /* จัดตำแหน่งให้อยู่ตรงกลาง */
-    padding: 20px;
+    padding: 55px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -53,7 +53,6 @@
       margin: 10px auto;
       padding: 10px;
       background-color: #fff;
-      font-weight: bold;
       border: none;
       border-radius: 5px;
       text-align: center;
@@ -65,7 +64,11 @@
   .menubar button:hover {
       background-color: #f4f4f4;
       transform: scale(1.01);
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);   
+  }
+  #logout-button{
+    font-weight: bold;
+    color: black;
   }
   #divfornothead{
       display:flex; 
@@ -118,17 +121,23 @@
       font-size: 16px; 
       padding: 5px;
       border-radius: 5px;
-  
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .indentinput{
+    margin-left: 75px;
   }
   input,select,textarea{
       border:1px solid black;
-      border-radius: 5px;
+      border-radius: 7px;
+      font-size: 16px;
+      margin: 4px;
   }
-  
   textarea {
       resize: none;
       min-height: 100px;
       width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   
@@ -211,12 +220,13 @@
   .popup button {
       color: #fff;
       margin: 5px;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: normal;
       border: none;
-      width: 100px;
-      border-radius: 5px;
+      width: 120px;
+      border-radius: 6px;
       margin-right: 50px;
+      padding: 13px;
   }
   
   #saveedit, #yes-btn, .yes-btn {
@@ -234,48 +244,14 @@
       box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
   }
 
-  .upload {
-    padding: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  #realsavedraft-btn{
+    background-color: #329D3B;
   }
 
-  .drop-area {
-    width: 100%;
-    padding: 30px;
-    border: 4px dashed #5c5c5c;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
- .drop-area .icon {
-    font-size: 50px;
-    margin-bottom: 10px;
-    color: #fc902c;
+  input[type="file"] {
+    display: none;
  }
-
- .drop-area .Header {
-    font-size: 24px;
-    font-weight: 500;
- }
-
- .drop-area .Support {
-    font-size: 16px;
-    color: gray;
-    margin: 10px 0 15px 0;
- }
-
-.drop-area button {
+ #browse-file{
     padding: 5px 10px;
     border: none;
     border-radius: 6px;
@@ -285,7 +261,7 @@
     color: white;
     cursor: pointer;
 }
-
-.active {
-    border-color: #fc902c;
+#browse-file:hover{
+    background-color: #e78712;
+    box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
 }

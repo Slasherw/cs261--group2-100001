@@ -24,7 +24,7 @@ public class FormController {
     public ResponseEntity<?> submitRequest(@RequestPart("data") Form form,
                                            @RequestPart("file") MultipartFile[] files) {
 
-            form.setStatus("ยังไม่ถูกดำเนินการ");
+        form.setStatus("ยังไม่ถูกดำเนินการ");
 
         if (form.getActiondate() == null) {
             form.setActiondate("-");
@@ -212,7 +212,7 @@ public class FormController {
     }
     @PostMapping("/savedraft")
     public ResponseEntity<?> submitRequestdraft(@RequestPart("data") Form form,
-                                           @RequestPart("file") MultipartFile[] files) {
+                                                @RequestPart("file") MultipartFile[] files) {
 
         if (form.getStatus() == null) {
             form.setStatus("แบบร่าง");

@@ -38,11 +38,9 @@
 
         <div id="menubar" class="menubar">
             <!--<button><a href="../html/lobby.html">หน้าหลัก</a></button>-->
-            <button><a href="../html/lobby.html">คำร้องนักเรียน</a></button>
-            <!--<button><a href="../html/request.html">เขียนคำร้อง</a></button>-->
-            
-            <!--<button><a href="#">แบบร่าง</a></button>
-            <button><a href="#">สถานะคำร้อง</a></button> -->
+            <button onclick="window.location.href='../html/lobby.html'">คำร้องนักศึกษา</button>
+            <button id="logout-button" class="btn btn-primary">ออกจากระบบ</button>
+            <!-- <button><a href="#">สถานะคำร้อง</a></button> -->
         </div>
 
         <div class="container">
@@ -55,7 +53,7 @@
                 <button type="button" id="edit-btn">แก้ไข</button>
                 <button type="button" id="cancel-btn">ยกเลิก</button>
             </div> -->
-            <h1 id="" style="text-align: center;">แบบฟอร์มคำร้องของนักเรียนทั้งหมด(อาจารย์ที่ปรึกษา)</h1>
+            <h1 id="" style="text-align: center;">แบบฟอร์มคำร้องของนักศึกษาทั้งหมด(อาจารย์ที่ปรึกษา)</h1>
             <div id="request-details"></div>
         </div>
 
@@ -71,6 +69,11 @@
         <button class="yes-btn" onclick="location.reload();">ตกลง</button>
     </div>
 
+    <div id="logoutpopup" class="popup">
+        <p>ต้องการออกจากระบบ ?</p>
+        <button id="logout" class="yes-btn">ใช่</button>
+        <button id="nologout" class="no-btn">ไม่</button>
+    </div>
     <script src="../js/Advisor_request.js"></script>
 </body>
 

@@ -133,3 +133,29 @@ const displayname_th = sessionStorage.getItem('displaynameth');
 const nameFromSession = sessionStorage.getItem('displaynameth');
 document.getElementById('menuname').innerHTML = `${displayname_th} <a class="fa fa-user-circle" style="color: black;"></a>`;
 
+document.getElementById('logout-button').addEventListener('click', function() {
+
+    document.getElementById('logoutpopup').style.display = 'block';
+
+});
+
+document.getElementById('nologout').addEventListener('click', function() {
+
+    document.getElementById('logoutpopup').style.display = 'none';
+
+});
+
+document.getElementById('logout').addEventListener('click', function() {
+    // ลบข้อมูลทั้งหมดใน sessionStorage
+    sessionStorage.clear();
+  
+    window.location.href = '../index.html'; 
+});
+// Get the <p> element
+const menuName = document.getElementById("menuname");
+
+// Check if the text content (excluding the <a> tag) is "null"
+if (menuName.childNodes[0].nodeValue.trim() === "null") {
+  // Update only the text node of the <p>, keeping the <a> tag intact
+  menuName.childNodes[0].nodeValue = "อาจารย์ ";
+}

@@ -30,11 +30,10 @@
       margin: 50px auto;
       margin-top: 0px;
       margin-bottom: 0px;
-      padding: 20px;
+      padding: 50px;
       background-color: rgba(255, 255, 255, 0.9);
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
   
       padding-left: 50px;
       padding-right: 50px;
@@ -59,7 +58,6 @@
       margin: 10px auto;
       padding: 10px;
       background-color: #fff;
-      font-weight: bold;
       border: none;
       border-radius: 5px;
       text-align: center;
@@ -72,6 +70,9 @@
       background-color: #f4f4f4;
       transform: scale(1.01);
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+  }
+  #logout-button{
+    font-weight: bold;
   }
   #divfornothead{
       display:flex; 
@@ -116,11 +117,55 @@
   }
   
   
+/*popup*/
+  .popup {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #ccc;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
   
+  }
   
+  .popup button {
+      color: #fff;
+      margin: 5px;
+      font-size: 16px;
+      font-weight: normal;
+      border: none;
+      width: 120px;
+      border-radius: 6px;
+      margin-right: 50px;
+      padding: 13px;
+  }
+  
+  .yes-btn {
+      background-color: #FFD13F;
+  }
+  .yes-btn:hover{
+      background-color: #f3d265;
+      box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
+  }
+  .no-btn {
+      background-color: #C3002F;
+  }
+  .no-btn:hover{
+      background-color: #d4264f;
+      box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
+  }
+
+
+
+
+
     
   
-  .user-info-container {
+.user-info-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
