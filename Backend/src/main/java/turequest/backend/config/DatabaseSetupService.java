@@ -1,4 +1,4 @@
-package com.example.crud;
+package turequest.backend.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -36,6 +36,9 @@ public class DatabaseSetupService {
             ALTER TABLE request ALTER COLUMN section NVARCHAR(10);
             ALTER TABLE request ALTER COLUMN reason NVARCHAR(100);
             ALTER TABLE request ALTER COLUMN status NVARCHAR(25);
+            ALTER TABLE request ALTER COLUMN stage NVARCHAR(25);
+            TRUNCATE TABLE request;
+            TRUNCATE TABLE files;
             """;
 
         jdbcTemplate.execute(sql);

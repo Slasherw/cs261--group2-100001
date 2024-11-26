@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchAllRequests() {
-    fetch("http://localhost:8080/submit-request/all-requests")
+    fetch("http://localhost:8080/submit-request/requests-by-stage/1")
         .then(response => response.json())
         .then(data => {
             displayRequests(data);
@@ -20,7 +20,6 @@ function displayRequests(requests) {
     let tableHTML = `<table class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th>ID</th>
                 <th>เลขทะเบียน</th>
                 <th>ชื่อ</th>
                 <th>วันที่ยื่น</th>
@@ -46,7 +45,6 @@ function displayRequests(requests) {
         }
         tableHTML += `
             <tr>
-                <td>${request.id}</td>
                 <td>${request.studentId}</td>
                 <td>${request.fullName}</td>
                 <td>${request.date}</td>
@@ -79,7 +77,7 @@ function admitRequest(id) {
         alert("กรุณาเลือกวันที่ก่อนที่จะอนุมัติคำร้อง");
         return;
     }
-    fetch(`http://localhost:8080/submit-request/admit/${id}?date=${selectedDate}`, {
+    fetch(`http://localhost:8080/submit-request/admitadvisor/${id}?date=${selectedDate}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -153,3 +151,4 @@ document.getElementById('logout').addEventListener('click', function() {
   
     window.location.href = '../index.html'; 
 });
+

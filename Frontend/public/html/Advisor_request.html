@@ -9,29 +9,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Radley:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Frontend/public/css/history.css">
-    <link rel="stylesheet" href="../css/history.css">
-
-
+    <link rel="stylesheet" href="../css/allrequest_style.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="edit-form">
     <div class="header">
         <div class="tulogo">
-            <!--<img src="/Frontend/public/img/tu_logo.png" alt="TU_logo"> -->
+            <!-- <img src="/Frontend/public/img/tu_logo.png" alt="TU_logo"> -->
             <img src="../img/tu_logo.png" alt="TU_logo">
         </div>
         
 
-        <div class="user-info" >
+        <div class="user-info">
             <p id="menuname">User Name
-                <a class="fa fa-user-circle"></a>
+                <a class="fa fa-user-circle"style="color: black;"></a>
             </p>
             <p id="icon">
-                <a class="fa fa-bars" ></a>
-                <a class="fa fa-comment"></a>
-                <a class="fa fa-bell"></a>
+                <a class="fa fa-bars" style="color: black;"></a>
+                <a class="fa fa-comment"style="color: black;"></a>
+                <a class="fa fa-bell"style="color: black;"></a>
             </p>
         </div>
     </div>
@@ -40,12 +37,10 @@
     <div id="divfornothead" class="flex-container">
 
         <div id="menubar" class="menubar">
-            <button onclick= "window.location.href='../html/lobby.html'">หน้าหลัก</button>
-            <button onclick= "window.location.href='../html/request.html'">เขียนคำร้อง</button>
-            <button onclick= "window.location.href='../html/history.html'">ประวัติการยื่นคำร้อง</button>
-            <button onclick= "window.location.href='../html/draft.html'">แบบร่าง</button>
-            <button onclick= "window.location.href='#'">สถานะคำร้อง</button>
+            <!--<button><a href="../html/lobby.html">หน้าหลัก</a></button>-->
+            <button onclick="window.location.href='../html/lobby.html'">คำร้องนักศึกษา</button>
             <button id="logout-button" class="btn btn-primary">ออกจากระบบ</button>
+            <!-- <button><a href="#">สถานะคำร้อง</a></button> -->
         </div>
 
         <div class="container">
@@ -58,30 +53,28 @@
                 <button type="button" id="edit-btn">แก้ไข</button>
                 <button type="button" id="cancel-btn">ยกเลิก</button>
             </div> -->
-            <h1 id="">ประวัติการยื่นคำร้อง</h1>
+            <h1 id="" style="text-align: center;">แบบฟอร์มคำร้องของนักศึกษาทั้งหมด(อาจารย์ที่ปรึกษา)</h1>
             <div id="request-details"></div>
         </div>
 
     </div>
 
-    <div class="popup" id="decline-popup">
-        <p>คุณแน่ใจหรือไม่ที่จะต้องการยกเลิกคำร้อง</p>
-        <button class="yes-btn" id="confirm">แน่ใจ</button>
-        <button class="no-btn" id="decline">ไว้ทีหลัง</button>
+    <div class="popup" id="submit-request-popup">
+        <p>อนุมัติคำร้องเรียบร้อยแล้ว</p>
+        <button class="yes-btn" onclick="location.reload();">ตกลง</button>
     </div>
 
-    <div class="popup" id="decline-popup-success">
-        <p>ยกเลิกคำร้องเรียบร้อยแล้ว</p>
-        <button class="yes-btn" id="confirm2">ปิดหน้าต่าง</button>
+    <div class="popup" id="decline-request-popup">
+        <p>ปฏิเสธคำร้องเรียบร้อยแล้ว</p>
+        <button class="yes-btn" onclick="location.reload();">ตกลง</button>
     </div>
 
     <div id="logoutpopup" class="popup">
-         <p>ต้องการออกจากระบบ ?</p>
+        <p>ต้องการออกจากระบบ ?</p>
         <button id="logout" class="yes-btn">ใช่</button>
         <button id="nologout" class="no-btn">ไม่</button>
-     </div>
-
-    <script src="../js/history_script.js"></script>
+    </div>
+    <script src="../js/Advisor_request.js"></script>
 </body>
 
 </html>

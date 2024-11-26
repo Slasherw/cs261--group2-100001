@@ -12,7 +12,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 function submitLogin(){
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-
+    if (username === "advisor" && password === "advisor") {
+        // ถ้า username และ password เป็น "advisor"
+        window.location.href = 'html/Advisor_request.html';
+    }
     if (!validateUsername() || !validatePassword()) {
         return;
     }

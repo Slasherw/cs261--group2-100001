@@ -10,7 +10,6 @@
       padding: 0;
   }*/
   
-  
   body{
       background-image: url('../img/request-bg.jpg');
       background-size: cover;
@@ -64,15 +63,18 @@
     transition: background-color 0.3s ease;
     font-size: 15px;
   }
-  #logout-button{
-    font-weight: bold;
-    color: black;
-  }
+  
   .menubar button:hover {
       background-color: #f4f4f4;
       transform: scale(1.01);
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
   }
+
+  #logout-button{
+    font-weight: bold;
+    color: black;
+  }
+
   #divfornothead{
     display: flex;
     align-items: flex-start; /* ทำให้เมนูและคอนเทนเนอร์อยู่ที่ขอบบนสุด */
@@ -88,7 +90,7 @@
       font-weight: bold;
       color: #C3002F;
 
-      /*      use boostrap*/
+/*      use boostrap*/
       padding-bottom: 15px;
   }
   
@@ -97,12 +99,18 @@
       height: auto;
       padding-top: 20px;
       padding-left: 30px;
-
     /*      width: 50%;*/
 /*      use boostrap*/
       width: 53.5%;
   }
-  #icon{
+  #icon {
+    display: flex;
+    justify-content: space-between;  
+    width: 150px; 
+    margin-left: 25px;
+}
+
+  #icon a{
       text-align: right;
       color: black;
   
@@ -157,34 +165,34 @@
   }
   
 
-  /*popup*/
-  .popup {
-      display: none;
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      border: 1px solid #ccc;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-  
-  }
-  
-  .popup button {
-      color: #fff;
-      margin: 5px;
-      font-size: 16px;
-      font-weight: normal;
-      border: none;
-      width: 120px;
-      border-radius: 5px;
-      margin-right: 50px;
-      padding: 13px;
-  }
+/*popup*/
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 
-  
+}
+
+.popup button {
+    color: #fff;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: normal;
+    border: none;
+    width: 120px;
+    border-radius: 6px;
+    margin-right: 50px;
+    padding: 13px;
+
+}
+
 #saveedit, #yes-btn, .yes-btn {
     background-color: #FFD13F;
 }
