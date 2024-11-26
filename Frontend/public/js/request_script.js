@@ -342,15 +342,27 @@ function handleDrop(e) {
     const fileArray = [...files];
     console.log(files);
     console.log(fileArray.length);
-    // handleFiles(files);
+    handleFiles(files);
 }
 
 function handleFiles(files) {
-    ([...files]).forEach(uploadFile);
+    const previewArea = document.getElementById('preview-area');
+    const currentFileCount = previewArea.childElementCount;
+    const newFileCount = files.length;
+
+    if (currentFileCount + newFileCount > 5) {
+        alert('เพิมไฟล์ได้สูงสุด 5 ไฟล์');
+        return;
+    }
+
+    ([...files]).forEach(file => {
+        uploadFile(file);
+        previewFile(file);
+    });
 }
 
 function uploadFile(file) {
-    const url = 'http://localhost:8080/fileserver';
+    const url = 'http://localhost:8080/fileserver/upload';
     const formData = new FormData();
     formData.append('file', file);
 
@@ -372,11 +384,28 @@ function uploadFile(file) {
     });
 }
 
+function previewFile(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const previewArea = document.getElementById('preview-area');
+        const filePreview = document.createElement('div');
+        filePreview.classList.add('file-preview');
+
+        const text = document.createElement('p');
+        text.textContent = file.name;
+        filePreview.appendChild(text);
+
+        previewArea.appendChild(filePreview);
+    };
+    reader.readAsDataURL(file);
+}
+
+
 fileInput.addEventListener('change', (e) => {
     const files = e.target.files;
     const fileArray = [...files];
     console.log(files);
-    // handleFiles(files);
+    handleFiles(files);
 });
 
 //browse file
