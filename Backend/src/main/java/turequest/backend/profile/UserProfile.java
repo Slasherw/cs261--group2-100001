@@ -1,8 +1,9 @@
-package com.example.crud;
+package turequest.backend.profile;
 
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class UserProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,11 +15,11 @@ public class UserProfile {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "displayname")
-    private String displayName;
+    @Column(name = "displayname_en")
+    private String displayname_en;
 
-    @Column(name = "displaynameth")
-    private String displayNameTh;
+    @Column(name = "displayname_th")
+    private String displayname_th;
 
     @Column(name = "status1")
     private String status1;
@@ -32,8 +33,8 @@ public class UserProfile {
     @Column(name = "type")
     private String type;
 
-    @Column(name = "statustu")
-    private String statusTu;
+    @Column(name = "tu_status")
+    private String tu_status;
 
     // Getters and Setters
     public String getUsername() {
@@ -53,19 +54,19 @@ public class UserProfile {
     }
 
     public String getDisplayName() {
-        return displayName;
+        return displayname_en;
     }
 
     public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+        this.displayname_en = displayName;
     }
 
     public String getDisplayNameTh() {
-        return displayNameTh;
+        return displayname_th;
     }
 
     public void setDisplayNameTh(String displayNameTh) {
-        this.displayNameTh = displayNameTh;
+        this.displayname_th = displayNameTh;
     }
 
     public String getStatus1() {
@@ -101,10 +102,10 @@ public class UserProfile {
     }
 
     public String getStatusTu() {
-        return statusTu;
+        return tu_status;
     }
 
     public void setStatusTu(String statusTu) {
-        this.statusTu = statusTu;
+        this.tu_status = statusTu;
     }
 }

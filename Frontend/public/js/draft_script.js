@@ -102,7 +102,6 @@ function editDraft(id) {
     window.location.href = `../html/request.html?id=${id}`;
 }
 
-
 document.getElementById('logout-button').addEventListener('click', function() {
 
     document.getElementById('logoutpopup').style.display = 'block';

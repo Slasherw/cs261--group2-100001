@@ -133,7 +133,6 @@ const displayname_th = sessionStorage.getItem('displaynameth');
 const nameFromSession = sessionStorage.getItem('displaynameth');
 document.getElementById('menuname').innerHTML = `${displayname_th} <a class="fa fa-user-circle" style="color: black;"></a>`;
 
-
 document.getElementById('logout-button').addEventListener('click', function() {
 
     document.getElementById('logoutpopup').style.display = 'block';

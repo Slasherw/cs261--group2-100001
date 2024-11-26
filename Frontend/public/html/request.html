@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Radley:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/Frontend/public/css/style.css">
     <link rel="stylesheet" href="../css/style.css"> 
 
@@ -41,11 +42,11 @@
     <div id="divfornothead" class="flex-container">
 
         <div id="menubar" class="menubar">
-            <button><a href="../html/lobby.html">หน้าหลัก</a></button>
-            <button><a href="../html/request.html">เขียนคำร้อง</a></button>
-            <button><a href="../html/history.html">ประวัติการยื่นคำร้อง</a></button>
-            <button><a href="#">แบบร่าง</a></button>
-            <button><a href="#">สถานะคำร้อง</a></button> 
+            <button onclick= "window.location.href='../html/lobby.html'">หน้าหลัก</a></button>
+            <button onclick= "window.location.href='../html/request.html'">เขียนคำร้อง</a></button>
+            <button onclick= "window.location.href='../html/history.html'">ประวัติการยื่นคำร้อง</a></button>
+            <button onclick= "window.location.href='../html/draft.html'">แบบร่าง</a></button>
+            <button onclick= "window.location.href='#'">สถานะคำร้อง</a></button>
             <button id="logout-button" class="btn btn-primary">ออกจากระบบ</button>
         </div>
 
@@ -143,8 +144,8 @@
                             <textarea id = "reason" placeholder="กรอกคำอธิบายเพิ่มเติม..."></textarea>
                         </div>
                     </h2>
-                    <!-- <input type="file" name="" id="attach_files" multiple> -->
 
+                    <!-- <input type="file" name="" id="attach_files" multiple> -->
                     <h2 class="document">เอกสารประกอบคำร้อง</h2>
                     <div class="upload">
                         <div class="drop-area">
@@ -163,6 +164,7 @@
                 </div>
 
                 <div class="buttons">
+                    <button type="button" id="savedraft-btn">บันทึกแบบร่าง</button>
                     <button type="button" id="submit-btn">ตกลง</button>
                     <button type="button" id="cancel-btn">ยกเลิก</button>
                     <button type="reset" id="cancel-work-btn" hidden></button>
@@ -170,8 +172,6 @@
             </form>
 
         </div>
-
-
 
         <div id="popupsubmit" class="popup">
             <p>บันทึกแบบร่าง หรือ ส่งคำร้อง ?</p>

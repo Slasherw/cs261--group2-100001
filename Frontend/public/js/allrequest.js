@@ -30,6 +30,7 @@ function displayRequests(requests) {
                 <th>Action</th>
                 <th>Action</th>
                 <th>วันที่ที่ตอบรับ</th>
+                <th>ข้อมูล</th>
             </tr>
         </thead>
         <tbody>`;
@@ -61,6 +62,9 @@ function displayRequests(requests) {
                 </td>
                 <td>
                 <input type="date" id="date-${request.id}"  class="form-control">
+                </td>
+                <td>
+                <button class="btn btn-outline-dark" onclick="goToDetailRequest(${request.id})">detail</button>
                 </td>
             </tr>`;
     });
@@ -121,6 +125,11 @@ function admitRequest(id) {
     .catch(error => {
         console.error("Error denying request:", error);
     });
+}
+function goToDetailRequest(requestId) {
+    // สร้าง URL ใหม่เพื่อส่ง requestId ไปยังหน้า detailrequest.html
+    const url = `detailrequest.html?id=${requestId}`;
+    window.location.href = url; // เปลี่ยนเส้นทางไปยัง URL ที่ต้องการ
 }
 const displayname_th = sessionStorage.getItem('displaynameth');
 const nameFromSession = sessionStorage.getItem('displaynameth');

@@ -1,8 +1,11 @@
-package com.example.crud;
+package turequest.backend.request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
+import turequest.backend.filestorage.FileServerRepository;
+import turequest.backend.filestorage.FileServerService;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -14,14 +17,29 @@ public class FormController {
     @Autowired
     private FormRepository formRepository;
 
+    @Autowired
+    private FileServerService fileServerService;
+
     @PostMapping
-    public ResponseEntity<?> submitRequest(@RequestBody Form form) {
+    public ResponseEntity<?> submitRequest(@RequestPart("data") Form form,
+                                           @RequestPart("file") MultipartFile[] files) {
+      
         if (form.getStatus() == null) {
             form.setStatus("ยังไม่ถูกดำเนินการ");
         }
         if (form.getActiondate() == null) {
             form.setActiondate("-");
         }
+
+        if (form.getStage() == null) {
+            form.setStage("0");
+        }
+        if (files.length > 5) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.singletonMap("message", "File limits up to 5 files"));
+
+        Long[] uploaded = {};
+        if (files.length != 0) uploaded = fileServerService.upload(files);
+        form.setAttachFiles(uploaded);
+
         // Save the form data to the database
         formRepository.save(form);
 
@@ -35,6 +53,13 @@ public class FormController {
         if (forms.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "No records found"));
         }
+        return ResponseEntity.ok(forms);
+    }
+
+    @GetMapping("/requests-by-stage/{stage}")
+    public ResponseEntity<List<Form>> getRequestsByStage(@PathVariable String stage) {
+        // ค้นหา form ทั้งหมดที่มี stage ตรงกับค่า stage ที่ส่งมา
+        List<Form> forms = formRepository.findByStage(stage);
         return ResponseEntity.ok(forms);
     }
 
@@ -56,7 +81,8 @@ public class FormController {
         formRepository.deleteById(id); // Delete the form from the database
         return ResponseEntity.ok(Collections.singletonMap("message", "Form deleted successfully"));
     }
-    @PutMapping("/update/{id}")
+
+    @PutMapping(value = "/update/{id}", consumes = {"application/json", "text/plain"})
     public ResponseEntity<?> updateRequest(@PathVariable Long id, @RequestBody Form updatedForm) {
         // ตรวจสอบว่า form ที่มี id นี้มีอยู่หรือไม่
         if (!formRepository.existsById(id)) {
@@ -107,8 +133,9 @@ public class FormController {
 
         // ดึงข้อมูลคำร้องจากฐานข้อมูลและอัปเดตสถานะเป็น "อนุมัติคำร้อง"
         Form form = formRepository.findById(id).get();
-        form.setStatus("อนุมัติคำร้อง");
+        form.setStatus("รอที่ปรึกษาอนุมัติ");
         form.setActiondate(date);
+        form.setStage("1");
         formRepository.save(form);
 
         return ResponseEntity.ok(Collections.singletonMap("success", true));
@@ -124,6 +151,55 @@ public class FormController {
         Form form = formRepository.findById(id).get();
         form.setStatus("ปฏิเสธคำร้อง");
         form.setActiondate(date);
+        form.setStage("-1");
+        formRepository.save(form);
+
+        return ResponseEntity.ok(Collections.singletonMap("success", true));
+    }
+    @PutMapping("/admitadvisor/{id}")
+    public ResponseEntity<?> admitRequestAdvisor(@PathVariable Long id , @RequestParam String date) {
+        // ตรวจสอบว่า form ที่มี id นี้มีอยู่หรือไม่
+        if (!formRepository.existsById(id)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "Form not found"));
+        }
+
+        // ดึงข้อมูลคำร้องจากฐานข้อมูลและอัปเดตสถานะเป็น "อนุมัติคำร้อง"
+        Form form = formRepository.findById(id).get();
+        form.setStatus("รอเจ้าหน้าที่ตรวจสอบ");
+        form.setActiondate(date);
+        form.setStage("2");
+        formRepository.save(form);
+
+        return ResponseEntity.ok(Collections.singletonMap("success", true));
+    }
+    @PutMapping("/admitstaff/{id}")
+    public ResponseEntity<?> admitRequeststaff(@PathVariable Long id , @RequestParam String date) {
+        // ตรวจสอบว่า form ที่มี id นี้มีอยู่หรือไม่
+        if (!formRepository.existsById(id)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "Form not found"));
+        }
+
+        // ดึงข้อมูลคำร้องจากฐานข้อมูลและอัปเดตสถานะเป็น "อนุมัติคำร้อง"
+        Form form = formRepository.findById(id).get();
+        form.setStatus("รอคณบดีอนุมัติ");
+        form.setActiondate(date);
+        form.setStage("3");
+        formRepository.save(form);
+
+        return ResponseEntity.ok(Collections.singletonMap("success", true));
+    }
+    @PutMapping("/admitdean/{id}")
+    public ResponseEntity<?> admitRequestsdean(@PathVariable Long id , @RequestParam String date) {
+        // ตรวจสอบว่า form ที่มี id นี้มีอยู่หรือไม่
+        if (!formRepository.existsById(id)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "Form not found"));
+        }
+
+        // ดึงข้อมูลคำร้องจากฐานข้อมูลและอัปเดตสถานะเป็น "อนุมัติคำร้อง"
+        Form form = formRepository.findById(id).get();
+        form.setStatus("อนุมัติคำร้อง");
+        form.setActiondate(date);
+        form.setStage("4");
         formRepository.save(form);
 
         return ResponseEntity.ok(Collections.singletonMap("success", true));

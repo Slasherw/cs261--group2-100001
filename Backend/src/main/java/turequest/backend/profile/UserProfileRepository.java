@@ -1,4 +1,4 @@
-package com.example.crud;
+package turequest.backend.profile;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

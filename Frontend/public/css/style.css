@@ -141,29 +141,54 @@
       display: flex;
   /*	border:1px solid black;*/
       justify-content: center;
+      margin-top: 30px;
+      
   }
+
+  #savedraft-btn{
+    color: #fff;
+    background-color: #329D3B;
+    font-size: 25px;
+    border: none;
+    width: 180px;
+    border-radius: 5px;
+    margin-right: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#savedraft-btn:hover{
+    background-color: #40ba4b;
+    box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
+}
+
   
   #submit-btn{
       color: #fff;
       background-color: #FFD13F;
-      font-size: 20px;
+      font-size: 25px;
       border: none;
-      width: 80px;
+      width: 160px;
       border-radius: 5px;
+      margin-left: 50px;
       margin-right: 50px;
+      padding-top: 5px;
+      padding-bottom: 5px;
   }
   #submit-btn:hover{
       background-color: #f3d265;
       box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
   }
+
   #cancel-btn{
       color: #fff;
       background-color: #c41e25;
-      font-size: 20px;
+      font-size: 25px;
       border: none;
-      width: 80px;
+      width: 160px;
       border-radius: 5px;
       margin-left: 50px;
+      padding-top: 5px;
+      padding-bottom: 5px;
   }
   #cancel-btn:hover{
       background-color: #d4264f;
@@ -212,9 +237,11 @@
       background-color: #d4264f;
       box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
   }
-#realsavedraft-btn{
-  background-color: #329D3B;
-}
+
+  #realsavedraft-btn{
+    background-color: #329D3B;
+  }
+
   .upload {
     padding: 16px;
     display: flex;
