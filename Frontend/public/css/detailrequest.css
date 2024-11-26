@@ -1,0 +1,126 @@
+*{
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  /*body {
+      background: linear-gradient(135deg, #f7a94d, #ffd76e);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+  }*/
+  
+  
+  body{
+      /*background-image: url('/Frontend/public/img/request-bg.jpg');*/
+      background-image: url('../img/request-bg.jpg');
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+  }
+  .container {
+    display: table; /* ให้ขนาด container ขยายตามขนาดของตารางภายใน */
+    width: 1000px; 
+    height: auto; /* ให้ความสูงปรับตามเนื้อหาภายใน */
+    margin: 0 auto; /* จัดตำแหน่งให้อยู่ตรงกลาง */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .flex-container {
+    display: flex;
+    align-items: stretch; /* ให้ทั้งสองขยายความสูงเท่ากัน */
+}
+  
+  .menubar {
+      background-color: #C3002F;
+      width: 200px;
+      min-height: 100vh;
+      padding-top: 20px;
+      align-items: center;
+  }
+  
+  .menubar a {
+      color: black;
+      text-decoration: none;
+  }
+  
+  .menubar button {
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+      padding: 10px;
+      background-color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 15px;
+  }
+  
+  .menubar button:hover {
+      background-color: #f4f4f4;
+      transform: scale(1.01);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+  }
+  #divfornothead{
+      display:flex; 
+      align-items: flex-start; 
+      justify-content: center;
+  }
+  
+  /* Head*/
+  .header {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #C3002F;
+  }
+  
+  .header img {
+      height: 50px;
+      margin-right: 10px;
+      width: 50%;
+      height: auto;
+      padding-top: 20px;
+      padding-left: 30px;
+  }
+  #icon{
+      text-align: right;
+  
+  }
+  .header p{
+      font-size: 25px;
+      padding-right: 30px;
+      color: black;
+  }
+  .header a{
+      padding-right: 8px;
+      padding-left: 8px;
+  }
+
+  .request-label {
+    font-weight: bold;
+    color: gray;
+}
+
+.date{
+    /*	border: 1px solid navy;*/
+        text-align: right;
+        height: 40px;
+    }
+
+#date{
+    border: none;
+    width: 150px; 
+    height: 25px; 
+    font-size: 16px; 
+    padding: 5px;
+    border-radius: 5px;
+}
