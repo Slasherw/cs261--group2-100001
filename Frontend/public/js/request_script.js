@@ -420,85 +420,14 @@ window.onload = function() {
 
 }
 
-//drag and drop
-const dropArea = document.querySelector('.drop-area');
-const fileInput = document.getElementById('attach_files');
-
-['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-    dropArea.addEventListener(eventName, preventDefaults, false);
-});
-
-function preventDefaults(e) {
-    e.preventDefault();
-    e.stopPropagation();
+const fileBtn = document.querySelector("#attach_files");
+const customTxt = document.querySelector("#custom-msg");
+fileBtn.addEventListener("change",function(){
+    if (fileBtn.value) {
+      customTxt.innerHTML = fileBtn.value.match(
+        /[\/\\]([\w\d\s\.\-\(\)]+)$/
+      )[1]
+    }else {
+      customTxt.innerHTML = "No file chosen, yet.";
 }
-
-['dragenter', 'dragover'].forEach(eventName => {
-    dropArea.addEventListener(eventName, () => {
-        dropArea.classList.add('active');
-    }, false);
 });
-
-['dragleave', 'drop'].forEach(eventName => {
-    dropArea.addEventListener(eventName, () => {
-        dropArea.classList.remove('active');
-    }, false);
-});
-
-dropArea.addEventListener('drop', handleDrop, false);
-
-function handleDrop(e) {
-    const dt = e.dataTransfer;
-    const files = dt.files;
-    const fileArray = [...files];
-    console.log(files);
-    console.log(fileArray.length);
-    handleFiles(files);
-}
-
-function handleFiles(files) {
-    const previewArea = document.getElementById('preview-area');
-    const currentFileCount = previewArea.childElementCount;
-    const newFileCount = files.length;
-
-    if (currentFileCount + newFileCount > 5) {
-        alert('เพิมไฟล์ได้สูงสุด 5 ไฟล์');
-        return;
-    }
-
-    ([...files]).forEach(file => {
-        previewFile(file);
-    });
-}
-
-function previewFile(file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        const previewArea = document.getElementById('preview-area');
-        const filePreview = document.createElement('div');
-        filePreview.classList.add('file-preview');
-
-        const text = document.createElement('p');
-        text.textContent = file.name;
-        filePreview.appendChild(text);
-
-        previewArea.appendChild(filePreview);
-    };
-    reader.readAsDataURL(file);
-}
-
-
-fileInput.addEventListener('change', (e) => {
-    const files = e.target.files;
-    const fileArray = [...files];
-    console.log(files);
-    handleFiles(files);
-});
-
-//browse file
-const browseButton = document.getElementById('browse-button');
-browseButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    fileInput.click();
-});
-
