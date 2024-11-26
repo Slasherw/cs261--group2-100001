@@ -24,7 +24,7 @@
     width: 1000px; 
     height: auto; /* ให้ความสูงปรับตามเนื้อหาภายใน */
     margin: 0 auto; /* จัดตำแหน่งให้อยู่ตรงกลาง */
-    padding: 20px;
+    padding: 55px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -121,17 +121,23 @@
       font-size: 16px; 
       padding: 5px;
       border-radius: 5px;
-  
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .indentinput{
+    margin-left: 75px;
   }
   input,select,textarea{
       border:1px solid black;
-      border-radius: 5px;
+      border-radius: 7px;
+      font-size: 16px;
+      margin: 4px;
   }
-  
   textarea {
       resize: none;
       min-height: 100px;
       width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   
