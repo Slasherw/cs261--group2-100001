@@ -4,20 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request Details</title>
-    <link rel="stylesheet" href="styles.css"> <!-- คุณสามารถเพิ่มการเชื่อมโยง CSS ได้ที่นี่ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Radley:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/Frontend/public/css/style.css">
+    <link rel="stylesheet" href="../css/detailrequest.css"> <!-- คุณสามารถเพิ่มการเชื่อมโยง CSS ได้ที่นี่ -->
     <script src="../js/detailrequest.js" defer></script> <!-- เชื่อมโยงกับไฟล์ JavaScript -->
 </head>
 <body>
-    <div class="container">
-        <h1>Request Details</h1>
+    <div class="header">
+        <div class= "tulogo">
+            <!-- <img src="/Frontend/public/img/tu_logo.png" alt="TU_logo">-->
+            <img src="../img/tu_logo.png" alt="TU_logo">
+        </div>
+        
+        <div class="user-info" >
+            <p id ="menuname">User Name
+                <a class="fa fa-user-circle"></a>
+            </p>
+            <p id="icon">
+                <a class="fa fa-bars"></a>
+                <a class="fa fa-comment"></a>
+                <a class="fa fa-bell"></a>
+            </p>
+        </div>
+    </div>
 
-        <!-- กำหนด container สำหรับแสดงข้อมูลคำร้อง -->
-        <div id="request-container">
-            <p>Loading request details...</p>
+    <div id="divfornothead" class="flex-container">
+        
+        <div id="menubar" class="menubar">
+            <!-- ปุ่มกลับไปที่หน้าหลักหรือหน้าอื่น ๆ -->
+            <button onclick="window.location.href = '#';">Back to Home</button>
         </div>
 
-        <!-- ปุ่มกลับไปที่หน้าหลักหรือหน้าอื่น ๆ -->
-        <button onclick="window.location.href = '../index.html';">Back to Home</button>
+        <div class="container">
+            <h1>Request Details</h1>
+
+            <!-- กำหนด container สำหรับแสดงข้อมูลคำร้อง -->
+            <div id="request-container">
+                <div id="dateRequest"></div>
+            </div>
+
+            <div id="attachFiles"></div>
+            <div id="status"></div>
+        </div>
     </div>
 </body>
 </html>
