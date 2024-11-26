@@ -38,11 +38,11 @@
 
         <div id="menubar" class="menubar">
             <!--<button><a href="../html/lobby.html">หน้าหลัก</a></button>-->
-            <button><a href="../html/lobby.html">หน้าหลัก</a></button>
-            <button><a href="../html/allrequest.html">คำร้องใหม่</a></button>
-            <button><a href="#">อนุมัติแล้ว</a></button>
-            <button><a href="#">ไม่อนุมัติ</a></button>
-            <!--<button><a href="../html/request.html">เขียนคำร้อง</a></button>-->
+            <button onclick="window.location.href='../html/lobby.html'">หน้าหลัก</button>
+            <button onclick="window.location.href='../html/allrequest.html'">คำร้องใหม่</button>
+            <button onclick="window.location.href='#'">อนุมัติแล้ว</button>
+            <button onclick="window.location.href='#'">ไม่อนุมัติ</button>
+            <button id="logout-button" class="btn btn-primary">ออกจากระบบ</button>
             
             <!--<button><a href="#">แบบร่าง</a></button>
             <button><a href="#">สถานะคำร้อง</a></button> -->
@@ -72,6 +72,12 @@
     <div class="popup" id="decline-request-popup">
         <p>ปฏิเสธคำร้องเรียบร้อยแล้ว</p>
         <button class="yes-btn" onclick="location.reload();">ตกลง</button>
+    </div>
+
+    <div id="logoutpopup" class="popup">
+        <p>ต้องการออกจากระบบ ?</p>
+        <button id="logout" class="yes-btn">ใช่</button>
+        <button id="nologout" class="no-btn">ไม่</button>
     </div>
 
     <script src="../js/allrequest.js"></script>

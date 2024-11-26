@@ -53,7 +53,6 @@
       margin: 10px auto;
       padding: 10px;
       background-color: #fff;
-      font-weight: bold;
       border: none;
       border-radius: 5px;
       text-align: center;
@@ -65,7 +64,11 @@
   .menubar button:hover {
       background-color: #f4f4f4;
       transform: scale(1.01);
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);   
+  }
+  #logout-button{
+    font-weight: bold;
+    color: black;
   }
   #divfornothead{
       display:flex; 
@@ -211,12 +214,13 @@
   .popup button {
       color: #fff;
       margin: 5px;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: normal;
       border: none;
-      width: 100px;
-      border-radius: 5px;
+      width: 120px;
+      border-radius: 6px;
       margin-right: 50px;
+      padding: 13px;
   }
   
   #saveedit, #yes-btn, .yes-btn {
@@ -232,6 +236,10 @@
   #sendrequest:hover, #no-btn:hover, .no-btn:hover{
       background-color: #d4264f;
       box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
+  }
+
+  #realsavedraft-btn{
+    background-color: #329D3B;
   }
 
   .upload {

@@ -102,5 +102,21 @@ function editDraft(id) {
     window.location.href = `../html/request.html?id=${id}`;
 }
 
+document.getElementById('logout-button').addEventListener('click', function() {
 
-    
+    document.getElementById('logoutpopup').style.display = 'block';
+
+});
+
+document.getElementById('nologout').addEventListener('click', function() {
+
+    document.getElementById('logoutpopup').style.display = 'none';
+
+});
+
+document.getElementById('logout').addEventListener('click', function() {
+    // ลบข้อมูลทั้งหมดใน sessionStorage
+    sessionStorage.clear();
+  
+    window.location.href = '../index.html'; 
+});
