@@ -10,18 +10,17 @@
       padding: 0;
   }*/
   
-  
   body{
-      /*background-image: url('/Frontend/public/img/request-bg.jpg');*/
       background-image: url('../img/request-bg.jpg');
       background-size: cover;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
   }
+  
   .container {
     display: table; /* ให้ขนาด container ขยายตามขนาดของตารางภายใน */
-    width: 1000px; 
+    width: auto; /* ให้ความกว้างปรับตามเนื้อหาภายใน */
     height: auto; /* ให้ความสูงปรับตามเนื้อหาภายใน */
     margin: 0 auto; /* จัดตำแหน่งให้อยู่ตรงกลาง */
     padding: 20px;
@@ -29,17 +28,21 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+  .container h1{ /*if use boostrap*/
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+  }
   .flex-container {
     display: flex;
     align-items: stretch; /* ให้ทั้งสองขยายความสูงเท่ากัน */
 }
-  
   .menubar {
-      background-color: #C3002F;
-      width: 200px;
-      min-height: 100vh;
-      padding-top: 20px;
-      align-items: center;
+    background-color: #C3002F;
+    width: 200px;
+    min-height: 100vh;
+    padding-top: 20px;
+    align-items: center;
   }
   
   .menubar a {
@@ -48,18 +51,17 @@
   }
   
   .menubar button {
-      display: block;
-      width: 90%;
-      margin: 10px auto;
-      padding: 10px;
-      background-color: #fff;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      text-align: center;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-size: 15px;
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 15px;
   }
   
   .menubar button:hover {
@@ -67,12 +69,18 @@
       transform: scale(1.01);
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
   }
-  #divfornothead{
-      display:flex; 
-      align-items: flex-start; 
-      justify-content: center;
+
+  #logout-button{
+    font-weight: bold;
+    color: black;
   }
-  
+
+  #divfornothead{
+    display: flex;
+    align-items: flex-start; /* ทำให้เมนูและคอนเทนเนอร์อยู่ที่ขอบบนสุด */
+    justify-content: center;
+  }
+ 
   /* Head*/
   .header {
       display: flex;
@@ -81,18 +89,30 @@
       font-size: 1.5em;
       font-weight: bold;
       color: #C3002F;
+
+/*      use boostrap*/
+      padding-bottom: 15px;
   }
   
   .header img {
-      height: 50px;
       margin-right: 10px;
-      width: 50%;
       height: auto;
       padding-top: 20px;
       padding-left: 30px;
+    /*      width: 50%;*/
+/*      use boostrap*/
+      width: 53.5%;
   }
-  #icon{
+  #icon {
+    display: flex;
+    justify-content: space-between;  
+    width: 150px; 
+    margin-left: 25px;
+}
+
+  #icon a{
       text-align: right;
+      color: black;
   
   }
   .header p{
@@ -104,33 +124,10 @@
       padding-right: 8px;
       padding-left: 8px;
   }
-  
-  
-  .date-form{
-  /*	border: 1px solid navy;*/
-      text-align: right;
-      height: 40px;
+  #menuname{ /*if use boostrap*/
+    padding-top: 25px;
+    padding-bottom: 10px;
   }
-  #date{
-      border: none;
-      width: 150px; 
-      height: 25px; 
-      font-size: 16px; 
-      padding: 5px;
-      border-radius: 5px;
-  
-  }
-  input,select,textarea{
-      border:1px solid black;
-      border-radius: 5px;
-  }
-  
-  textarea {
-      resize: none;
-      min-height: 100px;
-      width: 100%;
-  }
-  
   
   
   /*buttonss*/
@@ -140,7 +137,7 @@
       justify-content: center;
   }
   
-  #submit-btn{
+  #edit-btn{
       color: #fff;
       background-color: #FFD13F;
       font-size: 20px;
@@ -149,7 +146,7 @@
       border-radius: 5px;
       margin-right: 50px;
   }
-  #submit-btn:hover{
+  #edit-btn:hover{
       background-color: #f3d265;
       box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
   }
@@ -167,44 +164,46 @@
       box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
   }
   
-  /*popup*/
-  
-  .popup {
-      display: none;
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      border: 1px solid #ccc;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-  
-  }
-  
-  .popup button {
-      color: #fff;
-      margin: 5px;
-      font-size: 14px;
-      font-weight: normal;
-      border: none;
-      width: 100px;
-      border-radius: 5px;
-      margin-right: 50px;
-  }
-  
-  #saveedit, #yes-btn, .yes-btn {
-      background-color: #FFD13F;
-  }
-  #saveedit:hover, .yes-btn:hover, #yes-btn:hover{
-      background-color: #f3d265;
-      box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
-  }
-  #sendrequest, #no-btn, .no-btn {
-      background-color: #C3002F;
-  }
-  #sendrequest:hover, #no-btn:hover, .no-btn:hover{
-      background-color: #d4264f;
-      box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
-  }
+
+/*popup*/
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+}
+
+.popup button {
+    color: #fff;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: normal;
+    border: none;
+    width: 120px;
+    border-radius: 6px;
+    margin-right: 50px;
+    padding: 13px;
+
+}
+
+#saveedit, #yes-btn, .yes-btn {
+    background-color: #FFD13F;
+}
+#saveedit:hover, .yes-btn:hover, #yes-btn:hover{
+    background-color: #f3d265;
+    box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
+}
+#sendrequest, #no-btn, .no-btn {
+    background-color: #C3002F;
+}
+#sendrequest:hover, #no-btn:hover, .no-btn:hover{
+    background-color: #d4264f;
+    box-shadow: 0 0 8px rgba(80, 80, 80, 0.3);
+}

@@ -1,4 +1,4 @@
-package com.example.crud;
+package turequest.backend.profile;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +29,7 @@ public class UserProfileService {
     }
 
     public UserProfile createUserProfile(UserProfile userProfile) {
+        System.out.println("-> " + userProfile.getDisplayName() + " / " + userProfile.getDisplayNameTh() + " / " + userProfile.getStatusTu());
         return userProfileRepository.save(userProfile);
     }
 

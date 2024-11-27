@@ -149,17 +149,6 @@ uniYear.addEventListener('input', validateSemester);
     //document.getElementById('popupsubmit').style.display = 'block';
     //});
 
-document.getElementById('saveedit').addEventListener('click', function() {
-    alert('บันทึกแบบร่างสำเร็จ');
-    document.getElementById('popupsubmit').style.display = 'none';
-    });
-
-document.getElementById('sendrequest').addEventListener('click', function() {
-    alert('ส่งคำร้องสำเร็จ');
-    document.getElementById('popupsubmit').style.display = 'none';
-    });
-
-
 //pop up for clickingยกเลิก
 document.getElementById('cancel-btn').addEventListener('click', function() {
     document.getElementById('popupsend').style.display = 'none';
@@ -178,10 +167,15 @@ document.getElementById('yes-btn').addEventListener('click', function() {
     });
 const nameth = sessionStorage.getItem('displaynameth');
 document.getElementById('fullname').value = nameth;
+document.getElementById('fullname').disabled = true;
+
 const numberID = sessionStorage.getItem('username');
 document.getElementById('number').value = numberID;
+document.getElementById('number').disabled = true;
 const email = sessionStorage.getItem('email');
 document.getElementById('email').value = email;
+document.getElementById('email').disabled = true;
+
 document.getElementById('menuname').value = nameth;
 const nameFromSession = sessionStorage.getItem('displaynameth');
 if (nameFromSession) {
@@ -208,6 +202,93 @@ document.getElementById('notsend-btn').addEventListener('click', function() {
 
 });
 
+document.getElementById('savedraft-btn').addEventListener('click', function() {
+
+    document.getElementById('savedraftpopup').style.display = 'block';
+
+});
+
+document.getElementById('notsavedraft-btn').addEventListener('click', function() {
+
+    document.getElementById('savedraftpopup').style.display = 'none';
+
+});
+/*
+document.getElementById('realsavedraft-btn').addEventListener('click', function() {
+
+    const formData = {
+        date: document.getElementById('date').value,
+        fullName: document.getElementById('fullname').value,
+        
+        studentId: document.getElementById('number').value,
+        year: document.getElementById('year').value,
+        
+        email: document.getElementById('email').value,
+        address: document.getElementById('no').value,
+        subdistrict: document.getElementById('sub-district').value,
+        district: document.getElementById('district').value,
+        province: document.getElementById('province').value,
+        studentPhone: document.getElementById('phone').value,
+        parentPhone: document.getElementById('parent').value,
+        advisor: document.getElementById('teacher').value,
+        department: document.getElementById('department').value,
+        prefix: document.getElementById('prefix').value,
+        semester: document.getElementById('semester').value,
+        academicYear: document.getElementById('uni-year').value,
+        courseCode: document.getElementById('course-code').value,
+        courseName: document.getElementById('course').value,
+        section: document.getElementById('Section').value,
+        reason: document.getElementById('reason').value,
+        requestType: document.getElementById('requesttype').value
+
+        
+    };
+
+    const requestId = new URLSearchParams(window.location.search).get('id'); // assuming id is passed as a query param
+
+    const url = requestId 
+        ? `http://localhost:8080/draft-request/update/${requestId}` // PUT or PATCH API endpoint for update
+        : `http://localhost:8080/draft-request`; // POST endpoint for new data
+
+    const method = requestId ? 'PUT' : 'POST'; // Use PUT for update, POST for new entry
+    const formData_2 = new FormData();
+
+    formData_2.append("data", new Blob([JSON.stringify(formData)], { type: "application/json" }));
+    const fileInput = document.querySelector('#attach_files');
+    const files = fileInput ? fileInput.files : null;
+    if (files && files.length > 0) {
+        for (let i = 0; i < files.length; i++) {
+            formData_2.append("file", files[i]);
+        }
+    }
+    const headers = requestId
+    ? { 'Content-Type': 'application/json' } // สำหรับการอัปเดต
+    : undefined; // ไม่ต้องใส่ headers สำหรับ POST แบบ multipart/form-data
+    // Send the data to the server
+    fetch(url, {
+        method: method,
+        headers: headers,
+        body: requestId ? JSON.stringify(formData) : formData_2
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('savedraftpopup').style.display = 'none';
+        if (data.success) {
+            document.getElementById('cancel-work-btn').click();
+            document.getElementById('popupsent-text').innerText = requestId ? 'คำร้องถูกอัพเดตเรียบร้อยแล้ว' : 'คำร้องถูกส่งเรียบร้อยแล้ว';
+            document.getElementById('popupsend').style.display = 'none';
+            document.getElementById('popupsent').style.display = 'block';            
+        } else {
+            alert('เกิดข้อผิดพลาดในการส่งคำร้อง');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('เกิดข้อผิดพลาดในการส่งคำร้องแบบรับการตอบกลับฝั่ง server');
+    });
+
+});
+*/
 document.getElementById('send-btn').addEventListener('click', function() {
     // Get the form data
 
@@ -246,17 +327,28 @@ document.getElementById('send-btn').addEventListener('click', function() {
         : `http://localhost:8080/submit-request`; // POST endpoint for new data
 
     const method = requestId ? 'PUT' : 'POST'; // Use PUT for update, POST for new entry
+    const formData_2 = new FormData();
 
+    formData_2.append("data", new Blob([JSON.stringify(formData)], { type: "application/json" }));
+    const fileInput = document.querySelector('#attach_files');
+    const files = fileInput ? fileInput.files : null;
+    if (files && files.length > 0) {
+        for (let i = 0; i < files.length; i++) {
+            formData_2.append("file", files[i]);
+        }
+    }
+    const headers = requestId
+    ? { 'Content-Type': 'application/json' } // สำหรับการอัปเดต
+    : undefined; // ไม่ต้องใส่ headers สำหรับ POST แบบ multipart/form-data
     // Send the data to the server
     fetch(url, {
         method: method,
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        headers: headers,
+        body: requestId ? JSON.stringify(formData) : formData_2
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if (data.success) {
             document.getElementById('cancel-work-btn').click();
             document.getElementById('popupsent-text').innerText = requestId ? 'คำร้องถูกอัพเดตเรียบร้อยแล้ว' : 'คำร้องถูกส่งเรียบร้อยแล้ว';
@@ -270,6 +362,25 @@ document.getElementById('send-btn').addEventListener('click', function() {
         console.error('Error:', error);
         alert('เกิดข้อผิดพลาดในการส่งคำร้องแบบรับการตอบกลับฝั่ง server');
     });
+});
+
+document.getElementById('logout-button').addEventListener('click', function() {
+
+    document.getElementById('logoutpopup').style.display = 'block';
+
+});
+
+document.getElementById('nologout').addEventListener('click', function() {
+
+    document.getElementById('logoutpopup').style.display = 'none';
+
+});
+
+document.getElementById('logout').addEventListener('click', function() {
+    // ลบข้อมูลทั้งหมดใน sessionStorage
+    sessionStorage.clear();
+  
+    window.location.href = '../index.html'; 
 });
 
 
@@ -308,3 +419,115 @@ window.onload = function() {
     })
 
 }
+
+const fileBtn = document.querySelector("#attach_files");
+const customTxt = document.querySelector("#custom-msg");
+
+fileBtn.addEventListener("change", function () {
+  if (fileBtn.files.length > 0) {
+    // Map through the FileList to get each file's name
+    const fileNames = Array.from(fileBtn.files).map(file => file.name);
+    // Join file names with a separator (e.g., comma)
+    customTxt.innerHTML = fileNames.join(" and  ");
+  } else {
+    customTxt.innerHTML = "No file chosen, yet.";
+  }
+});
+document.getElementById('realsavedraft-btn').addEventListener('click', function() {
+    // Get the form data
+
+    const formData = {
+        date: document.getElementById('date').value,
+        fullName: document.getElementById('fullname').value,
+        
+        studentId: document.getElementById('number').value,
+        year: document.getElementById('year').value,
+        
+        email: document.getElementById('email').value,
+        address: document.getElementById('no').value,
+        subdistrict: document.getElementById('sub-district').value,
+        district: document.getElementById('district').value,
+        province: document.getElementById('province').value,
+        studentPhone: document.getElementById('phone').value,
+        parentPhone: document.getElementById('parent').value,
+        advisor: document.getElementById('teacher').value,
+        department: document.getElementById('department').value,
+        prefix: document.getElementById('prefix').value,
+        semester: document.getElementById('semester').value,
+        academicYear: document.getElementById('uni-year').value,
+        courseCode: document.getElementById('course-code').value,
+        courseName: document.getElementById('course').value,
+        section: document.getElementById('Section').value,
+        reason: document.getElementById('reason').value,
+        requestType: document.getElementById('requesttype').value
+
+        
+    };
+
+    const requestId = new URLSearchParams(window.location.search).get('id'); // assuming id is passed as a query param
+
+    const url = requestId 
+        ? `http://localhost:8080/submit-request/update1/${requestId}` // PUT or PATCH API endpoint for update
+        : `http://localhost:8080/submit-request/savedraft`; // POST endpoint for new data
+
+    const method = requestId ? 'PUT' : 'POST'; // Use PUT for update, POST for new entry
+    const formData_2 = new FormData();
+
+    formData_2.append("data", new Blob([JSON.stringify(formData)], { type: "application/json" }));
+    const fileInput = document.querySelector('#attach_files');
+    const files = fileInput ? fileInput.files : null;
+    if (files && files.length > 0) {
+        for (let i = 0; i < files.length; i++) {
+            formData_2.append("file", files[i]);
+        }
+    }
+    const headers = requestId
+    ? { 'Content-Type': 'application/json' } // สำหรับการอัปเดต
+    : undefined; // ไม่ต้องใส่ headers สำหรับ POST แบบ multipart/form-data
+    // Send the data to the server
+    fetch(url, {
+        method: method,
+        headers: headers,
+        body: requestId ? JSON.stringify(formData) : formData_2
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.success) {
+            document.getElementById('cancel-work-btn').click();
+            document.getElementById('popupsent-text').innerText = requestId ? 'คำร้องถูกอัพเดตเรียบร้อยแล้ว' : 'คำร้องถูกส่งเรียบร้อยแล้ว';
+            document.getElementById('popupsend').style.display = 'none';
+            document.getElementById('popupsent').style.display = 'block';            
+        } else {
+            alert('เกิดข้อผิดพลาดในการส่งคำร้อง');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('เกิดข้อผิดพลาดในการส่งคำร้องแบบรับการตอบกลับฝั่ง server');
+    });
+});
+// Function to check for URL parameters
+function getURLParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+  
+  // Check if "id" parameter exists in the URL
+  const id = getURLParameter("id");
+  if (id) {
+    // Hide elements if "id" parameter is present
+    document.querySelector(".document").style.display = "none";
+    document.querySelector("#browse-file").style.display = "none";
+    document.querySelector("#custom-msg").style.display = "none";
+    document.querySelector("#attach_files").style.display = "none";
+  }
+  // Get the button and the popup element
+const saveDraftBtn = document.getElementById("realsavedraft-btn");
+const saveDraftPopup = document.getElementById("savedraftpopup");
+
+// Add an event listener to the button
+saveDraftBtn.addEventListener("click", function () {
+  // Hide the popup
+  saveDraftPopup.style.display = "none";
+});

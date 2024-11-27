@@ -1,21 +1,23 @@
-package com.example.crud;
+package turequest.backend.requestdraft;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/submit-request")
+@RequestMapping("/draft-request")
 @CrossOrigin(origins = "http://localhost:3000")
-public class FormController {
+public class DraftController {
     @Autowired
-    private FormRepository formRepository;
+    private DraftRepository formRepository;
 
     @PostMapping
-    public ResponseEntity<?> submitRequest(@RequestBody Form form) {
+    public ResponseEntity<?> submitRequest(@RequestBody DraftForm form) {
         if (form.getStatus() == null) {
             form.setStatus("ยังไม่ถูกดำเนินการ");
         }
@@ -31,7 +33,7 @@ public class FormController {
 
     @GetMapping(value = "/student/{studentId}", produces = "application/json;charset=UTF-8")
     public ResponseEntity<?> getFormByStudentId(@PathVariable String studentId) {
-        List<Form> forms = formRepository.findByStudentId(studentId);
+        List<DraftForm> forms = formRepository.findByStudentId(studentId);
         if (forms.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "No records found"));
         }
@@ -40,7 +42,7 @@ public class FormController {
 
     @GetMapping(value = "/info/{requestId}", produces = "application/json;charset=UTF-8")
     public ResponseEntity<?> getFormById(@PathVariable Long requestId) {
-        Optional<Form> forms = formRepository.findById(requestId);
+        Optional<DraftForm> forms = formRepository.findById(requestId);
         if (forms.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "No records found"));
         }
@@ -57,14 +59,14 @@ public class FormController {
         return ResponseEntity.ok(Collections.singletonMap("message", "Form deleted successfully"));
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateRequest(@PathVariable Long id, @RequestBody Form updatedForm) {
+    public ResponseEntity<?> updateRequest(@PathVariable Long id, @RequestBody DraftForm updatedForm) {
         // ตรวจสอบว่า form ที่มี id นี้มีอยู่หรือไม่
         if (!formRepository.existsById(id)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "Form not found"));
         }
 
         // ดึงข้อมูลคำร้องเก่ามาและอัพเดตค่าใหม่ที่ส่งมา
-        Form form = formRepository.findById(id).get();
+        DraftForm form = formRepository.findById(id).get();
         form.setFullName(updatedForm.getFullName());
         form.setDate(updatedForm.getDate());
         form.setYear(updatedForm.getYear());
@@ -94,38 +96,8 @@ public class FormController {
 
     }
     @GetMapping("/all-requests")
-    public ResponseEntity<List<Form>> getAllRequests() {
-        List<Form> forms = formRepository.findAll();
+    public ResponseEntity<List<DraftForm>> getAllRequests() {
+        List<DraftForm> forms = formRepository.findAll();
         return ResponseEntity.ok(forms);
-    }
-    @PutMapping("/admit/{id}")
-    public ResponseEntity<?> admitRequest(@PathVariable Long id , @RequestParam String date) {
-        // ตรวจสอบว่า form ที่มี id นี้มีอยู่หรือไม่
-        if (!formRepository.existsById(id)) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "Form not found"));
-        }
-
-        // ดึงข้อมูลคำร้องจากฐานข้อมูลและอัปเดตสถานะเป็น "อนุมัติคำร้อง"
-        Form form = formRepository.findById(id).get();
-        form.setStatus("อนุมัติคำร้อง");
-        form.setActiondate(date);
-        formRepository.save(form);
-
-        return ResponseEntity.ok(Collections.singletonMap("success", true));
-    }
-    @PutMapping("/deny/{id}")
-    public ResponseEntity<?> denyRequest(@PathVariable Long id , @RequestParam String date) {
-        // ตรวจสอบว่า form ที่มี id นี้มีอยู่หรือไม่
-        if (!formRepository.existsById(id)) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message", "Form not found"));
-        }
-
-        // ดึงข้อมูลคำร้องจากฐานข้อมูลและอัปเดตสถานะเป็น "ปฏิเสธคำร้อง"
-        Form form = formRepository.findById(id).get();
-        form.setStatus("ปฏิเสธคำร้อง");
-        form.setActiondate(date);
-        formRepository.save(form);
-
-        return ResponseEntity.ok(Collections.singletonMap("success", true));
     }
 }
