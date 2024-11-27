@@ -151,6 +151,7 @@ document.getElementById('logout').addEventListener('click', function() {
   
     window.location.href = '../index.html'; 
 });
+
 // Get the <p> element
 const menuName = document.getElementById("menuname");
 

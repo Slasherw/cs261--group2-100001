@@ -151,6 +151,7 @@ document.getElementById('logout').addEventListener('click', function() {
   
     window.location.href = '../index.html'; 
 });
+
 // Get the <p> element
 const menuName = document.getElementById("menuname");
 
@@ -159,3 +160,4 @@ if (menuName.childNodes[0].nodeValue.trim() === "null") {
   // Update only the text node of the <p>, keeping the <a> tag intact
   menuName.childNodes[0].nodeValue = "คณบดี ";
 }
+
