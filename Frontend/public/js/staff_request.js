@@ -151,3 +151,12 @@ document.getElementById('logout').addEventListener('click', function() {
   
     window.location.href = '../index.html'; 
 });
+
+// Get the <p> element
+const menuName = document.getElementById("menuname");
+
+// Check if the text content (excluding the <a> tag) is "null"
+if (menuName.childNodes[0].nodeValue.trim() === "null") {
+  // Update only the text node of the <p>, keeping the <a> tag intact
+  menuName.childNodes[0].nodeValue = "เจ้าหน้าที่วิชาการ ";
+}

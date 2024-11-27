@@ -21,7 +21,7 @@
         </div>
         
         <div class="user-info" >
-            <p id ="menuname">User Name
+            <p id ="menuname">คำร้อง
                 <a class="fa fa-user-circle"></a>
             </p>
             <p id="icon">
@@ -36,12 +36,11 @@
         
         <div id="menubar" class="menubar">
             <!-- ปุ่มกลับไปที่หน้าหลักหรือหน้าอื่น ๆ -->
-            <button onclick="window.location.href = '#';">Back to Home</button>
+            <button onclick="goBack()">ย้อนกลับ</button>
         </div>
 
         <div class="container">
-            <h1>Request Details</h1>
-
+            <h1 style="align-items: center; text-align: center;">รายละเอียดทั้งหมดของคำร้อง</h1>
             <!-- กำหนด container สำหรับแสดงข้อมูลคำร้อง -->
             <div id="request-container">
                 <div id="dateRequest"></div>
@@ -49,6 +48,7 @@
 
             <div id="attachFiles"></div>
             <div id="status"></div>
+            <div id="actiondate"></div>
         </div>
     </div>
 </body>

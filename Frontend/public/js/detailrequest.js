@@ -72,6 +72,51 @@ function displayRequestDetails(request) {
     container.innerHTML += details;
     */
     // บันทึกข้อมูล attachFiles ลงใน sessionStorage
+    document.getElementById('request-container').innerHTML = `
+    <h2>หมายเลขคำร้อง: ${request.id}</h2>
+    <p >วันที่ที่ยื่นคำร้อง : ${request.date}</p>
+    <h2>ข้อมูลนักศึกษา</h2>
+    <pre>
+ชื่อ: ${request.fullName}      
+รหัสนักศึกษา: ${request.studentId}        
+ชั้นปี: ${request.year}
+สาขาวิชา: ${request.department}        
+อีเมลล์: ${request.email}
+</pre>
+    <h2>ที่อยู่ที่สามารถติดต่อได้</h2>
+<pre>
+เลขที่ : ${request.address}    
+แขวง/ตำบล : ${request.subdistrict}    
+เขต/อำเภอ : ${request.district}
+จังหวัด : ${request.province}    
+โทรศัพท์นักศึกษา : ${request.studentPhone}
+โทรศัพท์ผู้ปกครอง : ${request.parentPhone}    
+อาจารย์ที่ปรึกษา : ${request.advisor}
+</pre>
+    <h2>ประสงค์จะยื่นคำร้องเรื่อง</h2>
+    <pre>
+ประเภทของคำร้อง : ${request.requestType}   
+ภาคเรียนที่ : ${request.semester}   
+ปีการศึกษา : ${request.academicYear}
+รหัสวิชา : ${request.courseCode}    
+ชื่อวิชา : ${request.courseName}   
+Section : ${request.section}
+    </pre>
+    <h2>เหตุผลในการยื่นคำร้อง</h2>
+    <p>${request.reason}</p>
+    <h2>เอกสารประกอบคำร้อง</h2>
+`;
+
+document.getElementById('status').innerHTML = `
+    <h2>สถานะคำร้อง: ${request.status}</h2>
+`;
+document.getElementById('actiondate').innerHTML = `
+    <h2>ถูกดำเนินการล่าสุดเมื่อวันที่: ${request.actiondate}</h2>
+`;
+document.getElementById('attachFiles').innerHTML = `
+    <h2></h2>
+
+`;
     if (Array.isArray(request.attachFiles)) {
         sessionStorage.setItem('attachFiles', JSON.stringify(request.attachFiles));
     }
@@ -127,34 +172,6 @@ function downloadFile(fileId) {
     window.location.href = downloadUrl;
 }
 
-document.getElementById('request-container').innerHTML = `
-    <h2>หมายเลขคำร้อง: ${request.id}</h2>
-    <p class="date">${request.date}</p>
-    <h2>ข้อมูลนักศึกษา</h2>
-    <pre>
-ชื่อ: ${request.fullName}       รหัสนักศึกษา: ${request.studentId}        ชั้นปี: ${request.year}
-สาขาวิชา: ${request.department}        อีเมลล์: ${request.email}
-    </pre>
-    <h2>ที่อยู่ที่สามารถติดต่อได้</h2>
-    <pre>
-เลขที่ ${request.address}    แขวง/ตำบล ${request.subdistrict}    เขต/อำเภอ ${request.district}
-จังหวัด ${request.province}    โทรศัพท์นักศึกษา ${request.studentPhone}
-โทรศัพท์ผู้ปกครอง ${request.parentPhone}    อาจารย์ที่ปรึกษา ${request.advisor}
-    </pre>
-    <h2>ประสงค์จะยื่นคำร้องเรื่อง</h2>
-    <pre>
-${request.requestType}   ภาคเรียนที่ ${request.semester}    ปีการศึกษา ${request.academicYear}
-รหัสวิชา ${request.courseCode}    ชื่อวิชา ${request.courseName}   Section ${request.section}
-    </pre>
-    <h2>เหตุผลในการยื่นคำร้อง</h2>
-    <p>${request.reason}</p>
-`;
-
-document.getElementById('status').innerHTML = `
-    <h2>สถานะคำร้อง: ${request.status}</h2>
-`;
-
-document.getElementById('attachFiles').innerHTML = `
-    <h2>เอกสารประกอบคำร้อง</h2>
-    ${request.attachFiles}
-`;
+function goBack() {
+    window.history.back(); // หรือ window.history.go(-1);
+}
